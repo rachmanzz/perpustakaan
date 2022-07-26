@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  # proxy nginx
+  image: nginx:1.23.1
+  container_name: proxy_nginx
+  ports:
+    - "80:80"
