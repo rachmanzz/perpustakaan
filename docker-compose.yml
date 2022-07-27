@@ -3,37 +3,46 @@ version: '3'
 services:
   # proxy nginx
   nginx-proxy:
-    image: nginx:1.23.1
+    image: nginx:1.23.1-alpine
     container_name: proxy_nginx
     ports:
       - "80:80"
     depends_on:
-      - guest-perpustakaan
-      - admin-perpustakaan
-      - api-perpustakaan
+      - guest-library
+      - admin-library
+      - api-library
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf
 
-  # guest perpustakaan
-  guest-perpustakaan:
-    image: guest-perpustakaan
-    container_name: guest-perpustakaan
+  postgres-db:
+    image: postgres:14.4
+    container_name: postgres-db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=admin
+    ports:
+      - "8083:5432"
+
+  guest-library:
+    image: guest-library
+    container_name: guest-library
     build:
       context: ./guest
     environment:
       PORT: "8081"
     restart: on-failure
-  admin-perpustakaan:
-    image: admin-perpustakaan
-    container_name: admin-perpustakaan
+  admin-library:
+    image: admin-library
+    container_name: admin-library
     build:
       context: ./admin
     environment:
       PORT: "3002"
     restart: on-failure
-  api-perpustakaan:
-    image: api-perpustakaan
-    container_name: api-perpustakaan
+  api-library:
+    image: api-library
+    container_name: api-library
     build:
       context: ./api
     environment:
