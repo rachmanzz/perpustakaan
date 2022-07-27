@@ -15,7 +15,7 @@ services:
       - ./config/nginx.conf:/etc/nginx/nginx.conf
 
   postgres-db:
-    image: postgres:14.4
+    image: postgres:14.4-alpine
     container_name: postgres-db
     environment:
       - POSTGRES_USER=admin
