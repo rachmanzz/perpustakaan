@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  distDir: 'build'
+  basePath: '/admin',
+  output: 'standalone'
 }
 
 module.exports = nextConfig
