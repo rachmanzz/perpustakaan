@@ -1,0 +1,11 @@
+{
+    "library": "perpustakaan",
+    "email_address": "alamat email",
+    "password": "kata sandi",
+    "title_enter_account": "Masuk ke akun Anda",
+    "remember_me": "Ingat saya",
+    "forgot_password": "Lupa kata sandi?",
+    "dont_have_account": "Belum punya akun?",
+    "register_here": "Daftar di sini",
+    "sign_up": "Daftar"
+}

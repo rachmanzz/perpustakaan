@@ -1,0 +1,12 @@
+{
+    "library": "library",
+    "email_address": "email address",
+    "password": "password",
+    "title_enter_account": "Enter your account",
+    "remember_me": "Remember me",
+    "forgot_password": "Forgot password?",
+    "dont_have_account": "Don't have an account?",
+    "sign_up": "Sign up",
+    "register_here": "Register here"
+
+}
