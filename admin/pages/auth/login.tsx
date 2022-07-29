@@ -16,7 +16,7 @@ export default function Login() {
                         <div className="flex flex-row">
                             <div className="w-1/2 bg-white p-2">
                                 <div>
-                                    <h2 className="mt-4 text-center text-2xl font-extrabold text-gray-900 font-jakarta-sans">{lang('title_enter_account')}</h2>
+                                    <h2 className="mt-4 text-center text-2xl font-extrabold text-gray-900 font-jakarta-sans">{lang('title_enter_account', 'unique_sentence')}</h2>
                                 </div>
                                 <form className="mt-8 space-y-6">
                                     <div className="mx-5">
@@ -42,20 +42,20 @@ export default function Login() {
                                         <div className="flex items-center m-2 justify-between">
                                             <div className="flex items-center">
                                             <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-                                            <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900 font-jakarta-sans"> Ingat saya </label>
+                                            <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900 font-jakarta-sans">{lang('remember_me')}</label>
                                             </div>
 
                                             <div className="text-sm">
-                                                <Link href="#"><a className="text-[#F39508] font-jakarta-sans">Lupa kata sandi ?</a></Link>
+                                                <Link href="#"><a className="text-[#F39508] font-jakarta-sans">{lang('forgot_password')}</a></Link>
                                             </div>
                                         </div>
                                         <div className="mt-5 w-full flex pr-2 justify-end">
-                                            <button className="rounded bg-[#F39508] px-10 py-2 text-white">MASUK</button>
+                                            <button className="rounded bg-[#F39508] px-10 py-2 text-white">{lang('sign_in', 'upper')}</button>
                                         </div>
 
                                         <div className="flex justify-center mt-10 mb-5">
                                             <div className="text-sm">
-                                                <span className="text-[#939393] font-jakarta-sans">belum punya akun ?</span> <Link href="#"><a className="text-[#F39508]">daftar disini</a></Link>
+                                                <span className="text-[#939393] font-jakarta-sans">{lang('dont_have_account')}</span> <Link href="#"><a className="text-[#F39508]">{lang('register_here')}</a></Link>
                                             </div>
                                         </div>
                                     </div>

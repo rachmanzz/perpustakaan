@@ -2,11 +2,12 @@
     "library": "library",
     "email_address": "email address",
     "password": "password",
-    "title_enter_account": "Enter your account",
-    "remember_me": "Remember me",
-    "forgot_password": "Forgot password?",
-    "dont_have_account": "Don't have an account?",
-    "sign_up": "Sign up",
-    "register_here": "Register here"
+    "title_enter_account": "enter your account",
+    "remember_me": "remember me",
+    "forgot_password": "forgot password?",
+    "dont_have_account": "don't have an account?",
+    "sign_up": "sign up",
+    "register_here": "register here",
+    "sign_in": "sign in"
 
 }
