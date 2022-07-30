@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/admin',
+  //basePath: '/',
   output: 'standalone',
   i18n: {
     locales: ['en', 'id'],
