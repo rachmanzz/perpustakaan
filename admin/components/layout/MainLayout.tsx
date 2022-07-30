@@ -12,7 +12,7 @@ type componentType = { children: React.ReactNode }
 const MobileVersion = ({children}: componentType) => {
     return (
         <div className="w-full max-h-screen relative">
-            <div className="fixed py-2 px-6 flex flex-row justify-between bg-[#FFC978]/[70%] h-16 shadow-mobile-nav w-full bottom-0 z-50">
+            <div className="fixed py-2 px-6 flex flex-row justify-between bg-[#FBD9A5] h-16 shadow-mobile-nav w-full bottom-0 z-50">
                 <div className="flex items-center justify-center bg-focus-off h-12 w-12">
                     <Link href={"#"}>
                         <a><HomeOutline /></a>
@@ -34,7 +34,7 @@ const MobileVersion = ({children}: componentType) => {
                     </Link>
                 </div>
             </div>
-            unu
+            <div className=" z-20 ">{children}</div>
         </div>
     )
 }
