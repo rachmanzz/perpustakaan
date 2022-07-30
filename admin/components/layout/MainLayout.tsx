@@ -7,7 +7,7 @@ type componentType = { children: React.ReactNode }
 const MobileVersion = ({children}: componentType) => {
     return (
         <div className="h-screen w-full relative">
-            <div className="absolute bg-[#FFC978] h-16 shadow w-full bottom-0 z-50">
+            <div className="absolute  bg-[#FFC978] shadow-[#FBBF24]/50 h-16 shadow-top w-full bottom-0 z-50">
                 helo
             </div>
             unu
