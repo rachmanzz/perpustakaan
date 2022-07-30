@@ -1,20 +1,24 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import React from "react";
 import AccountCircleOutline from "../../components/icon/AccountCircleOutline";
 import ShieldKeyOutline from "../../components/icon/ShieldKeyOutline";
 import Reading from "../../components/svg-img/Reading"; 
 import useLanguage from "../../i18n";
 
 export default function Login() {
-    const {locale} = useRouter()
+    const {locale, locales} = useRouter()
     const lang = useLanguage(locale||'en')
     return (
         <div className="min-h-full flex items-center justify-center pt-[10%] px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl w-full  space-y-8">
+                <div className="flex sm:hidden items-center justify-center">
+                        <h1 className="text-[#F39508] text-2xl drop-shadow-md font-bold font-jakarta-sans">{process.env.NEXT_PUBLIC_APP_NAME || "PERPUSTAKAAN"}</h1>
+                </div>
                 <div>
                     <div className="bg-amber-400/10 rounded shadow-md shadow-[#FBBF24]/50 overflow-hidden">
                         <div className="flex flex-row">
-                            <div className="w-1/2 bg-white p-2">
+                            <div className="w-full sm:w-1/2 bg-white p-2">
                                 <div>
                                     <h2 className="mt-4 text-center text-2xl font-extrabold text-gray-900 font-jakarta-sans">{lang('title_enter_account', 'unique_sentence')}</h2>
                                 </div>
@@ -62,7 +66,7 @@ export default function Login() {
                                 </form>
 
                             </div>
-                            <div className="w-1/2 bg-[#F7E9CB]">
+                            <div className="hidden sm:flex w-1/2  bg-[#F7E9CB]">
                                 <div className="flex flex-col h-full flex-1 items-center justify-center">
                                     <h1 className="text-[#F39508] text-2xl drop-shadow-md font-bold font-jakarta-sans">{process.env.NEXT_PUBLIC_APP_NAME || "PERPUSTAKAAN"}</h1>
                                     <Reading height={250} />
@@ -71,7 +75,25 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
+                {/* position:bottom on screen item:center */}
+                <div className="flex items-center justify-center mt-10 mb-10">
+                    <span className="mr-2">{lang('choose_language')}: </span>
+                    {
+                        locales?.map((item, index) => {
+                            return (
+                                <React.Fragment key={index}>
+                                    {index > 0 && <span className="mx-2">|</span>}
+                                    <Link href={`/${item}/auth/login`} locale={locale}>
+                                        <a  className={`text-sm text-gray-900 font-bold font-jakarta-sans ${item !== locale ? 'text-[#F39508] underline' : ''} lang-${item}`}>{item}</a>
+                                    </Link>
+                                </React.Fragment>
+                                
+                            )
+                        })
+                    }
+                </div>
             </div>
+
         </div>
     )
 }
