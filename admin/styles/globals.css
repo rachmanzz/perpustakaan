@@ -11,3 +11,7 @@ body {
   margin: 0;
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
