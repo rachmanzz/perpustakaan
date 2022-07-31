@@ -1,6 +1,7 @@
 type WordCaseType = 'upper' | 'lower' | 'sentence' | 'unique_sentence' | 'title'
-const useLanguage = (locale: string) => (key: string, params?: WordCaseType | {[index: string]: string}, format?: WordCaseType) : string => {
-    const lang = require(`./langs/${locale}.json`);
+const useLanguage = (locale?: string) => (key: string, params?: WordCaseType | {[index: string]: string}, format?: WordCaseType) : string => {
+    const langFile = locale || 'en'
+    const lang = require(`./langs/${langFile}.json`);
     let sentence = lang[key] || '';
     if (params && typeof params === 'object') {
         Object.keys(params).forEach(key => {
