@@ -29,7 +29,7 @@ interface bothLayoutType extends componentType {
 
 const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => {
     const {pathname} = useRouter()
-    const leftElement = leftComponent && React.cloneElement(leftComponent, { className })
+    const leftElement = leftComponent && React.cloneElement(leftComponent, (props: any) => ({className}))
     return (
         <div className="w-full max-h-screen relative">
             <div className="w-full z-30 fixed top-0 bg-[#F7EEDE]  border-b border-orange-300/20 px-3  flex items-center h-16">
@@ -89,7 +89,8 @@ const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => 
 const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => {
     const {pathname} = useRouter()
     const [heightSize, setHeightSize] = useState(400)
-    const leftElement = leftComponent && React.cloneElement(leftComponent, { className })
+    const leftElement = leftComponent && React.cloneElement(leftComponent, {className})
+    
     useEffect(() => {
         setHeightSize(window.innerHeight)
         const handleResize = () => {
@@ -126,7 +127,6 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
                     </div>
                 </div>
                 <div className="flex flex-col relative flex-1">
-                    {/* header */}
                     <div className="w-full top-0 z-50 border-b border-orange-300/20 pl-10 pr-20  flex items-center h-16">
                         <div className="flex flex-row items-center w-full justify-between">
                             <div>{leftElement}</div>

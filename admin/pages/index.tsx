@@ -72,7 +72,13 @@ const Home: NextPageWithLayout = () => {
 }
 
 Home.getLayout = function (page) {
-  return (<MainLayout>{page}</MainLayout>)
+
+  const leftComponent = {
+    component: <h1 className=''>{ process.env.NEXT_PUBLIC_APP_NAME || "PERPUSTAKAAN" }</h1>,
+    mobileClassName: 'text-lg text-[#F39508]  font-bold font-jakarta-sans',
+    desktopClassName: 'text-[#F39508] text-2xl font-bold font-jakarta-sans'
+  }
+  return (<MainLayout both={leftComponent}>{page}</MainLayout>)
 }
 
 export default Home
