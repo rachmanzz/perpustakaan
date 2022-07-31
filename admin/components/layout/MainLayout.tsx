@@ -29,23 +29,13 @@ interface bothLayoutType extends componentType {
 
 const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => {
     const {pathname} = useRouter()
-    const leftElement = leftComponent && React.cloneElement(leftComponent, (props: any) => ({className}))
+    const leftElement = leftComponent && React.cloneElement(leftComponent, {className})
     return (
         <div className="w-full max-h-screen relative">
             <div className="w-full z-30 fixed top-0 bg-[#F7EEDE]  border-b border-orange-300/20 px-3  flex items-center h-16">
                 <div className="flex flex-row items-center w-full justify-between">
                     <div>
                         {leftElement}
-
-                        {/* <div className="relative">
-                            <label htmlFor="email-address" className="sr-only">Email address</label>
-                            <span className="absolute inset-y-0 left-0 z-10 flex items-center">
-                                <span className="py-2 pl-1">
-                                    <AccountCircleOutline size={24} />
-                                </span>
-                            </span>
-                            <input id="email-address" name="search" type="text" autoComplete="off" required className="appearance-none rounded pl-8 pr-2 placeholder:text-[#F39508]/[50%] font-sans relative w-full  py-2 bg-[#FFE6C0] placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none sm:text-sm" />
-                        </div> */}
                     </div>
                     <div className="flex flex-row gap-3">
                         {/* bell icon */}
