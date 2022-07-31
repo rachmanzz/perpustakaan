@@ -34,7 +34,7 @@ const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => 
         <div className="w-full max-h-screen relative">
             <div className="w-full z-30 fixed top-0 bg-[#F7EEDE]  border-b border-orange-300/20 px-3  flex items-center h-16">
                 <div className="flex flex-row items-center w-full justify-between">
-                    <div>
+                    <div className="w-full pr-8">
                         {leftElement}
                     </div>
                     <div className="flex flex-row gap-3">
@@ -119,7 +119,7 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
                 <div className="flex flex-col relative flex-1">
                     <div className="w-full top-0 z-50 border-b border-orange-300/20 pl-10 pr-20  flex items-center h-16">
                         <div className="flex flex-row items-center w-full justify-between">
-                            <div>{leftElement}</div>
+                            <div className="w-full pr-12">{leftElement}</div>
                             <div className="flex flex-row gap-5">
                                 {/* bell icon */}
                                 <div className="flex items-center rounded-full justify-center h-10 w-10 bg-focus-off-dark">
@@ -132,7 +132,7 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
                             </div>
                         </div>
                     </div>
-                    <div style={{ height: (400+64) < heightSize ? heightSize - 70: heightSize }} className="overflow-y-scroll px-10">{children}</div>
+                    <div style={{ height: (400+64) < heightSize ? heightSize - 70: heightSize }} className="overflow-y-scroll pr-10">{children}</div>
                 </div>
             </div>
         </React.Fragment>

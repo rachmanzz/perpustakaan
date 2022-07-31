@@ -10,6 +10,7 @@
     "register_here": "register here",
     "sign_in": "sign in",
     "choose_language": "choose language",
-    "search_book": "search book"
+    "search_book": "search book",
+    "search_book_identifier": "search book name | ISBN | user identifier"
 
 }

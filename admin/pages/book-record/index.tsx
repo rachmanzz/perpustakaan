@@ -7,7 +7,7 @@ import { NextPageWithLayout } from '../_app'
 const BorrowedBook: NextPageWithLayout = () => {
   return (
     <div className="container">
-        helo borrowed
+        helo record
     </div>
   )
 }
