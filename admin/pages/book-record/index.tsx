@@ -26,7 +26,7 @@ BookRecord.getLayout = function (page) {
   )
   const DesktopInput = () => (
     <div className="relative">
-        <label htmlFor="search-book" className="sr-only">{lang('search_book')}</label>
+        <label htmlFor="search-book" className="sr-only">find book</label>
         <span className="absolute inset-y-0 left-0 z-10 flex items-center">
             <span className="py-2 pl-1">
                 <BookSearch size={24} />
