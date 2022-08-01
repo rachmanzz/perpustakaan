@@ -8,6 +8,7 @@ import BellOutline from "../icon/BellOutline";
 import BookClockOutline from "../icon/BookClockOutline";
 import BookShelf from "../icon/BookShelf";
 import HomeOutline from "../icon/HomeOutline";
+import ShieldAccountOutline from "../icon/ShieldAccountOutline";
 import UserAccountOutline from "../icon/UserAccountOutline";
 
 
@@ -68,7 +69,7 @@ const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => 
                 </div>
                 <div className="flex items-center justify-center bg-focus-off h-12 w-12">
                     <Link href={"#"}>
-                        <a><UserAccountOutline /></a>
+                        <a><ShieldAccountOutline /></a>
                     </Link>
                 </div>
             </div>
@@ -118,7 +119,7 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
                     </div>
                     <div className="flex items-center justify-center bg-focus-off h-12 w-12">
                         <Link href={"#"}>
-                            <a><UserAccountOutline /></a>
+                            <a><ShieldAccountOutline /></a>
                         </Link>
                     </div>
                 </div>
