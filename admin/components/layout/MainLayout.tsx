@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 import { type } from "os";
 import React, { useEffect, useState } from "react";
+import useLanguage, {LangType} from "../../i18n";
 import AccountCircleOutline from "../icon/AccountCircleOutline";
 import BellOutline from "../icon/BellOutline";
 import BookClockOutline from "../icon/BookClockOutline";
@@ -15,12 +16,12 @@ import UserAccountOutline from "../icon/UserAccountOutline";
 type componentType = { children: React.ReactNode }
 
 type spreadNodeType = { mobileOnly?: React.ReactElement, desktopOnly?: React.ReactElement }
-type spreadClassType = { component: React.ReactElement, mobileClassName?: string, desktopClassName?: string }
+type spreadClassType = { component: React.ReactElement, mobileClassName?: string, desktopClassName?: string } 
 
 interface mainLayoutType extends componentType {
-    leftComponent?: React.ReactElement,
-    both?: spreadClassType,
-    specific?: spreadNodeType
+    leftComponent?: ((route: NextRouter, lang: LangType) => React.ReactElement) | React.ReactElement,
+    both?: ((route: NextRouter, lang: LangType) => spreadClassType) | spreadClassType,
+    specific?: ((route: NextRouter, lang: LangType) => spreadNodeType) | spreadNodeType
 }
 
 interface bothLayoutType extends componentType {
@@ -147,13 +148,18 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
 }
 export default function MainLayout({children, ...props}: mainLayoutType) {
     const [screenWidth, setScreenWidth] = useState(0);
+    const route = useRouter()
+    const lang = useLanguage(route.locale)
     const isMobile = screenWidth < 768;
     useEffect(() => {
         setScreenWidth(window.innerWidth);
         window.addEventListener("resize", () => setScreenWidth(window.innerWidth));
     }, []);
-    const mobileComponent = props.leftComponent || props.both?.component || props.specific?.mobileOnly
-    const desktopComponent = props.leftComponent || props.both?.component || props.specific?.desktopOnly
+    const bothDeviceLayout = props.both && (typeof props.both === 'function' ? props.both(route, lang) : props.both)
+    const sameComponent = props.leftComponent && (typeof props.leftComponent !== 'function' ? props.leftComponent : props.leftComponent(route, lang))
+    const spreadComponent = props.specific && (typeof props.specific === 'function' ? props.specific(route, lang) :props.specific)
+    const mobileComponent =   sameComponent || bothDeviceLayout?.component || spreadComponent?.mobileOnly 
+    const desktopComponent = sameComponent || bothDeviceLayout?.component || spreadComponent?.desktopOnly
 
-    return screenWidth === 0 ? <></>: isMobile ? <MobileVersion leftComponent={mobileComponent} className={props.both?.mobileClassName}>{children}</MobileVersion> : <DestopVersion leftComponent={desktopComponent} className={props.both?.desktopClassName}>{children}</DestopVersion>;
+    return screenWidth === 0 ? <></>: isMobile ? <MobileVersion leftComponent={mobileComponent} className={bothDeviceLayout?.mobileClassName}>{children}</MobileVersion> : <DestopVersion leftComponent={desktopComponent} className={bothDeviceLayout?.desktopClassName}>{children}</DestopVersion>;
 }

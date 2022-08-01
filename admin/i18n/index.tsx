@@ -1,5 +1,6 @@
 type WordCaseType = 'upper' | 'lower' | 'sentence' | 'unique_sentence' | 'title'
-const useLanguage = (locale?: string) => (key: string, params?: WordCaseType | {[index: string]: string}, format?: WordCaseType) : string => {
+export type LangType = (key: string, params?: WordCaseType | {[index: string]: string}, format?: WordCaseType) => string
+const useLanguage = (locale?: string): LangType => (key: string, params?: WordCaseType | {[index: string]: string}, format?: WordCaseType) : string => {
     const langFile = locale || 'en'
     const lang = require(`./langs/${langFile}.json`);
     let sentence = lang[key] || '';
