@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'jakarta-sans': ['Plus Jakarta Sans', 'sans-serif'],
+        'roboto-opensans': ['Roboto', 'Open Sans', 'sans-serif'],
       },
       boxShadow: {
         'mobile-nav': '0px -2px 2px 1px rgba(251,191,36,0.3)',
