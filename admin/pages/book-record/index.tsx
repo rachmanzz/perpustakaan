@@ -13,7 +13,6 @@ const BookRecord: NextPageWithLayout = () => {
 }
 
 BookRecord.getLayout = function (page) {
-  const lang = useLanguage('en')
   const MobileInput = () => (
     <div className="relative">
         <label htmlFor="search-book" className="sr-only">find book</label>
