@@ -4,6 +4,7 @@ import { NextRouter, useRouter } from "next/router";
 import { type } from "os";
 import React, { useEffect, useState } from "react";
 import useLanguage, {LangType} from "../../i18n";
+import navigation from "../../libraries/navigation";
 import AccountCircleOutline from "../icon/AccountCircleOutline";
 import BellOutline from "../icon/BellOutline";
 import BookClockOutline from "../icon/BookClockOutline";
@@ -53,26 +54,14 @@ const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => 
                 </div>
             </div>
             <div className="fixed py-2 px-6 flex flex-row justify-between bg-[#FBD9A5] h-16 shadow-mobile-nav w-full bottom-0 z-50">
-                <div>
-                    <Link href="/">
-                        <a className={`appearance-none touch-action-none flex items-center justify-center rounded-full h-12 w-12 ${pathname == '/' ? 'bg-[#FFC876]': 'bg-focus-off'}`}><HomeOutline /></a>
-                    </Link>
-                </div>
-                <div>
-                    <Link  href="/book-borrowed">
-                        <a className={`flex hover:rounded-full touch-action-none items-center justify-center rounded-full h-12 w-12 ${pathname == '/book-borrowed' ? 'bg-[#FFC876]': 'bg-focus-off'}`}><BookClockOutline /></a>
-                    </Link>
-                </div>
-                <div>
-                <Link href="/book-record">
-                        <a className={`flex hover:rounded-full touch-action-none items-center justify-center rounded-full h-12 w-12 ${pathname == '/book-record' ? 'bg-[#FFC876]': 'bg-focus-off'}`}><BookShelf /></a>
-                    </Link>
-                </div>
-                <div className="flex items-center justify-center bg-focus-off h-12 w-12">
-                    <Link href={"#"}>
-                        <a><ShieldAccountOutline /></a>
-                    </Link>
-                </div>
+                    {navigation.map((item, index) => {
+                        const Icon = item.icon()
+                        return (<div key={index}>
+                            <Link href={item.url}>
+                                <a className={`appearance-none touch-action-none flex items-center justify-center rounded-full h-12 w-12 ${pathname == item.url ? 'bg-[#FFC876]': 'bg-focus-off'}`}><Icon /></a>
+                            </Link>
+                        </div>)
+                    })}
             </div>
             <div className="z-20 py-16">{children}</div>
         </div>
@@ -103,26 +92,14 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
                             <Image src={ process.env.NEXT_PUBLIC_TINY_SQUARE_LOGO || require('../svg/logo.svg' )}/>
                         </div>
                     </div>
-                    <div>
-                        <Link href="/">
-                            <a className={`appearance-none flex items-center justify-center rounded-full h-12 w-12 ${pathname == '/' ? 'bg-[#FFC876]': 'bg-focus-off'}`}><HomeOutline /></a>
-                        </Link>
-                    </div>
-                    <div>
-                        <Link  href="/book-borrowed">
-                            <a className={`flex hover:rounded-full items-center justify-center rounded-full h-12 w-12 ${pathname == '/book-borrowed' ? 'bg-[#FFC876]': 'bg-focus-off'}`}><BookClockOutline /></a>
-                        </Link>
-                    </div>
-                    <div className="flex items-center justify-center bg-focus-off h-12 w-12">
-                    <Link href="/book-record">
-                            <a className={`flex hover:rounded-full items-center justify-center rounded-full h-12 w-12 ${pathname == '/book-record' ? 'bg-[#FFC876]': 'bg-focus-off'}`}><BookShelf /></a>
-                        </Link>
-                    </div>
-                    <div className="flex items-center justify-center bg-focus-off h-12 w-12">
-                        <Link href={"#"}>
-                            <a><ShieldAccountOutline /></a>
-                        </Link>
-                    </div>
+                    {navigation.map((item, index) => {
+                        const Icon = item.icon()
+                        return (<div key={index}>
+                                <Link href={item.url}>
+                                    <a className={`appearance-none touch-action-none flex items-center justify-center rounded-full h-12 w-12 ${pathname == item.url ? 'bg-[#FFC876]': 'bg-focus-off'}`}><Icon /></a>
+                                </Link>
+                            </div>)
+                    })}
                 </div>
                 <div className="flex flex-col relative flex-1">
                     <div className="w-full top-0 z-50 border-b border-orange-300/20 pl-10 pr-20  flex items-center h-16">
