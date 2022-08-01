@@ -1,6 +1,6 @@
 import { iconType } from "../IconType"
 
-const HomeOutline = ({size=32, fill="none", height, width, color, ...props}: iconType) => {
+const AccountClockOutline = ({size=32, fill="none", height, width, color, ...props}: iconType) => {
     const nextWidth = width || size
     const nextHeight = height || size
     return (
@@ -20,4 +20,4 @@ const HomeOutline = ({size=32, fill="none", height, width, color, ...props}: ico
       )
 }
   
-  export default HomeOutline
+  export default AccountClockOutline
