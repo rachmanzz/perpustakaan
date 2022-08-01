@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { type } from "os";
@@ -60,9 +61,9 @@ const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => 
                         <a className={`flex hover:rounded-full touch-action-none items-center justify-center rounded-full h-12 w-12 ${pathname == '/book-borrowed' ? 'bg-[#FFC876]': 'bg-focus-off'}`}><BookClockOutline /></a>
                     </Link>
                 </div>
-                <div className="flex items-center justify-center bg-focus-off h-12 w-12">
-                <Link href={"#"}>
-                        <a><BookShelf /></a>
+                <div>
+                <Link href="/book-record">
+                        <a className={`flex hover:rounded-full touch-action-none items-center justify-center rounded-full h-12 w-12 ${pathname == '/book-record' ? 'bg-[#FFC876]': 'bg-focus-off'}`}><BookShelf /></a>
                     </Link>
                 </div>
                 <div className="flex items-center justify-center bg-focus-off h-12 w-12">
@@ -96,6 +97,11 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
             <div className="w-full pl-16">
                 <div className="fixed h-full w-16 gap-5 left-0 bg-[#FBD9A5] shadow flex flex-col items-center">
                     <div>
+                        <div className="p-1">
+                            <Image src={ process.env.NEXT_PUBLIC_TINY_SQUARE_LOGO || require('../svg/logo.svg' )}/>
+                        </div>
+                    </div>
+                    <div>
                         <Link href="/">
                             <a className={`appearance-none flex items-center justify-center rounded-full h-12 w-12 ${pathname == '/' ? 'bg-[#FFC876]': 'bg-focus-off'}`}><HomeOutline /></a>
                         </Link>
@@ -106,8 +112,8 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
                         </Link>
                     </div>
                     <div className="flex items-center justify-center bg-focus-off h-12 w-12">
-                    <Link href={"#"}>
-                            <a><BookShelf /></a>
+                    <Link href="/book-record">
+                            <a className={`flex hover:rounded-full items-center justify-center rounded-full h-12 w-12 ${pathname == '/book-record' ? 'bg-[#FFC876]': 'bg-focus-off'}`}><BookShelf /></a>
                         </Link>
                     </div>
                     <div className="flex items-center justify-center bg-focus-off h-12 w-12">

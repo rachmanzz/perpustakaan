@@ -11,6 +11,7 @@
     "sign_in": "sign in",
     "choose_language": "choose language",
     "search_book": "search book",
-    "search_book_identifier": "search book name | ISBN | user identifier"
+    "search_book_identifier": "search book name | ISBN | user identifier",
+    "search_book_by_book_identifier": "search book name | ISBN | publisher | author"
 
 }

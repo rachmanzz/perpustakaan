@@ -11,5 +11,6 @@
     "sign_in": "masuk",
     "choose_language": "pilih bahasa",
     "search_book": "cari buku",
-    "search_book_identifier": "cari nama buku | ISBN | identitas peminjam"
+    "search_book_identifier": "cari nama buku | ISBN | identitas peminjam",
+    "search_book_by_book_identifier": "cari nama buku | ISBN | Penerbit | Penulis"
 }

@@ -4,7 +4,7 @@ import MainLayout from '../../components/layout/MainLayout'
 import useLanguage from '../../i18n'
 import { NextPageWithLayout } from '../_app'
 
-const BorrowedBook: NextPageWithLayout = () => {
+const BookRecord: NextPageWithLayout = () => {
   return (
     <div className="container">
         helo record
@@ -12,7 +12,7 @@ const BorrowedBook: NextPageWithLayout = () => {
   )
 }
 
-BorrowedBook.getLayout = function (page) {
+BookRecord.getLayout = function (page) {
   const router = useRouter()
   const lang = useLanguage(router?.locale)
   const MobileInput = () => (
@@ -23,7 +23,7 @@ BorrowedBook.getLayout = function (page) {
                 <BookSearch size={24} />
             </span>
         </span>
-        <input id="search-book" name="search" type="text" autoComplete="off" placeholder={lang('search_book_identifier')} required className="appearance-none rounded pl-8 pr-2 placeholder:text-[#F39508]/[50%] font-sans relative w-full  py-2 bg-[#FFE6C0] placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none sm:text-sm" />
+        <input id="search-book" name="search" type="text" autoComplete="off" placeholder={lang('search_book_by_book_identifier')} required className="appearance-none rounded pl-8 pr-2 placeholder:text-[#F39508]/[50%] font-sans relative w-full  py-2 bg-[#FFE6C0] placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none sm:text-sm" />
     </div>
   )
   const DesktopInput = () => (
@@ -34,7 +34,7 @@ BorrowedBook.getLayout = function (page) {
                 <BookSearch size={24} />
             </span>
         </span>
-        <input id="search-book" name="search" type="text" autoComplete="off" placeholder={lang('search_book_identifier')} required className="appearance-none rounded pl-8 pr-2 w-full lg:w-1/2 placeholder:text-[#F39508]/[50%] font-sans relative  py-2 bg-[#FFE6C0] rounded-t-md focus:outline-none sm:text-sm" />
+        <input id="search-book" name="search" type="text" autoComplete="off" placeholder={lang('search_book_by_book_identifier')} required className="appearance-none rounded pl-8 pr-2 w-full lg:w-1/2 placeholder:text-[#F39508]/[50%] font-sans relative  py-2 bg-[#FFE6C0] rounded-t-md focus:outline-none sm:text-sm" />
     </div>
   ) 
   return (<MainLayout specific={ {
@@ -43,4 +43,4 @@ BorrowedBook.getLayout = function (page) {
   } }>{page}</MainLayout>)
 }
 
-export default BorrowedBook
+export default BookRecord
