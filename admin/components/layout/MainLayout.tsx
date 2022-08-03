@@ -89,7 +89,7 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
                 <div className="fixed h-full w-16 gap-5 left-0 bg-[#FBD9A5] shadow flex flex-col items-center">
                     <div>
                         <div className="p-1">
-                            <Image src={ process.env.NEXT_PUBLIC_TINY_SQUARE_LOGO || require('../svg/logo.svg' )}/>
+                            <Image alt="logo" src={ process.env.NEXT_PUBLIC_TINY_SQUARE_LOGO || require('../svg/logo.svg' )}/>
                         </div>
                     </div>
                     {navigation.map((item, index) => {
