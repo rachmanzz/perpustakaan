@@ -5,6 +5,8 @@ import AccountSearchOutline from '../../components/icon/AccountSearchOutline'
 import ArrowLeftThick from '../../components/icon/ArrowLeftThick'
 import ArrowRightThick from '../../components/icon/ArrowRightThick'
 import SaveCheckOutline from '../../components/icon/SaveCheckOutline'
+import ShieldAccountOutline from '../../components/icon/ShieldAccountOutline'
+import BreadCrumb from '../../components/items/BreadCrumb'
 import MainLayout from '../../components/layout/MainLayout'
 import { LangType } from '../../i18n'
 import { NextPageWithLayout } from '../_app'
@@ -18,6 +20,75 @@ import { NextPageWithLayout } from '../_app'
 
 const UserAccount: NextPageWithLayout = () => {
   const users = [
+    {
+      id: 1,
+      name: "Barrett Mccall",
+      username: "barret",
+      email: "odio.a@aol.couk",
+      profile_picture: "",
+      verified: false,
+      email_verified: false,
+      role: "",
+      created_at: "2020-01-01",
+      updated_at: "2020-01-01",
+      profile: {
+        idcard: "",
+        address: "",
+        phone: "",
+        idexpired: "",
+        domicile: "",
+        province: "",
+        city: "",
+        district: "",
+        village: "",
+      }
+    },
+    {
+      id: 2,
+      name: "Thomas Sykes",
+      username: "thomas",
+      email: "sed.leo@protonmail.net",
+      profile_picture: "",
+      verified: false,
+      email_verified: false,
+      role: "",
+      created_at: "2020-01-01",
+      updated_at: "2020-01-01",
+      profile: {
+        idcard: "",
+        address: "",
+        phone: "",
+        idexpired: "",
+        domicile: "",
+        province: "",
+        city: "",
+        district: "",
+        village: "",
+      }
+    },
+    {
+      id: 3,
+      name: "Thaddeus Simmons",
+      username: "thaddeus",
+      email: "enim.non@protonmail.com",
+      profile_picture: "",
+      verified: false,
+      email_verified: false,
+      role: "",
+      created_at: "2020-01-01",
+      updated_at: "2020-01-01",
+      profile: {
+        idcard: "",
+        address: "",
+        phone: "",
+        idexpired: "",
+        domicile: "",
+        province: "",
+        city: "",
+        district: "",
+        village: "",
+      }
+    },
     {
       id: 1,
       name: "Barrett Mccall",
@@ -101,7 +172,17 @@ const UserAccount: NextPageWithLayout = () => {
     setCreateStep(step)
   }
 
-  const onVerifyCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+  const [verified, setVerified] = React.useState(false)
+
+  const onVerifyCheck = (isVerified: 'yes' | 'no' = 'no') => (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      if (isVerified === 'yes') {
+        setVerified(true)
+      } else {
+        setVerified(false)
+      }
+    }
 
   }
 
@@ -121,7 +202,7 @@ const UserAccount: NextPageWithLayout = () => {
         <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
       </div>
       {/* button right */}
-      <div className="flex flex-row mt-2 justify-end">
+      <div className="flex flex-row mt-10 justify-end">
       <button onClick={()=>nextStep(2)} onMouseLeave={hoverNext()} onMouseEnter={hoverNext(true)} type="button" className="inline-flex items-center py-2.5 text-sm font-medium text-center text-orange-300 rounded  focus:outline-none hover:text-orange-500 ">
         Next
           <ArrowRightThick color={btnHoverNext ? 'rgb(249 115 22)' : 'rgb(253 186 116)'} />
@@ -160,7 +241,7 @@ const UserAccount: NextPageWithLayout = () => {
         <label className="text-orange-500 font-roboto-opensans">Birthday</label>
         <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="date" />
       </div>
-      <div className="flex flex-row mt-2 justify-between">
+      <div className="flex flex-row mt-10 justify-between">
         <button onClick={()=>nextStep(1)} onMouseLeave={hoverBack()} onMouseEnter={hoverBack(true)} type="button" className="inline-flex items-center py-2.5 text-sm font-medium text-center text-orange-300 rounded  focus:outline-none hover:text-orange-500 ">
             <ArrowLeftThick color={btnHoverBack ? 'rgb(249 115 22)' : 'rgb(253 186 116)'}  />
             Back
@@ -198,14 +279,14 @@ const UserAccount: NextPageWithLayout = () => {
         {/* {check is verified or not input type checkbox} */}
         <label className="text-orange-500 font-roboto-opensans">Is Verified User ?</label>
         <div className="flex flex-row">
-          <input onChange={onVerifyCheck} className="mr-2" type="radio" name="verified" value="no" checked />
+          <input onChange={onVerifyCheck("no")} className="mr-2" type="radio" name="verified" value="no" checked={!verified} />
           <label className="text-orange-500 font-roboto-opensans">No</label>
 
-          <input onChange={onVerifyCheck} className="mr-2 ml-3" type="radio" name="verified" value="yes" />
+          <input onChange={onVerifyCheck("yes")} className="mr-2 ml-3" type="radio" name="verified" value="yes" checked={verified} />
           <label className="text-orange-500 font-roboto-opensans">Yes</label>
         </div>
       </div>
-      <div className="flex flex-row mt-2 justify-between">
+      <div className="flex flex-row mt-10 justify-between">
         <button onClick={()=>nextStep(2)} onMouseLeave={hoverBack()} onMouseEnter={hoverBack(true)} type="button" className="inline-flex items-center py-2.5 text-sm font-medium text-center text-orange-300 rounded  focus:outline-none hover:text-orange-500 ">
             <ArrowLeftThick color={btnHoverBack ? 'rgb(249 115 22)' : 'rgb(253 186 116)'}  />
             Back
@@ -221,49 +302,70 @@ const UserAccount: NextPageWithLayout = () => {
   return (
     <div className="p-2 sm:px-10">
         <div className="flex flex-col">
-          <div className="flex flex-col sm:flex-row sm:gap-2">
-            <div className="sm:w-2/3 w-full overflow-auto shadow bg-white  rounded">
-              <table className='table-auto w-full'>
-                <thead className='bg-orange-200'>
-                  <tr>
-                    <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">name</th>
-                    <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">email</th>
-                    <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">status</th>
-                    <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">created at</th>
-                    <th className="text-center border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">action</th>
-                  </tr>
-                  
-                </thead>
-                <tbody>
-                  {users.map(user => (
-                    <tr key={user.id}>
-                      <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.name}</td>
-                      <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.email}</td>
-                      <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.verified ? "verified" : "unverified"}</td>
-                      <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.created_at}</td>
-                      <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">#</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          <BreadCrumb className="font-roboto-opensans font-normal text-sm text-gray-500" activeClass="font-roboto-opensans font-normal text-sm text-gray-400" items={[
+            { item: "user account", href: "/", icon: () => <ShieldAccountOutline size={18} color="rgb(107 114 128)"/> }
+          ]} />
+          <div className="mt-3 mb-5 flex flex-row justify-between">
+            <div className="flex pt-2 justify-center items-center">
+              <h1 className=" uppercase text-xl font-bold text-gray-500">User Account</h1>
             </div>
-            <div className="hidden sm:flex sm:flex-col shadow rounded sm:basis-1/3 bg-white">
-              <div className="p-2 flex flex-row justify-between bg-orange-200">
-                <h1 className='text-gray-500 font-bold'>Create User</h1>
-                <div className="flex gap-1 text-sm items-center justify-center flex-row">
-                {
-                  [1,2,3].map(i => (
-                    <div key={i} className={`items-center flex justify-center border-white  text-center border rounded-full h-7 w-7 ${i === createStep && 'bg-white text-orange-500'}`}>
-                      <span>{i}</span>
-                    </div>
-                  ))  
-                }
-                </div>
+            <div className="flex flex-row">
+                {/* button create */}
+              <Link href="/user-account/create">
+                <a className="inline-flex border border-orange-400 rounded py-1 px-3 text-orange-400">
+                  create account 
+                </a>
+              </Link>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:gap-2">
+            <div className="sm:w-2/3">
+              <div className='w-full overflow-auto shadow bg-white rounded'>
+                <table className='table-auto w-full'>
+                  <thead className='bg-orange-200'>
+                    <tr>
+                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">name</th>
+                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">email</th>
+                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">status</th>
+                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">created at</th>
+                      <th className="text-center border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">action</th>
+                    </tr>
+                    
+                  </thead>
+                  <tbody>
+                    {users.map(user => (
+                      <tr key={user.id}>
+                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.name}</td>
+                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.email}</td>
+                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.verified ? "verified" : "unverified"}</td>
+                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.created_at}</td>
+                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">#</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-              <div className="p-3">
-                {createStep === 1 && <FormBasicInfo />}
-                {createStep === 2 && <FormProfile />}
-                {createStep === 3 && <FormNextProfile />}
+              
+            </div>
+            <div className="hidden sm:basis-1/3 sm:flex sm:flex-col">
+              <div className='shadow w-full rounded bg-white'>
+                <div className="p-2 flex flex-row justify-between bg-orange-200">
+                  <h1 className='text-gray-500 font-bold'>Create User</h1>
+                  <div className="flex gap-1 text-sm items-center justify-center flex-row">
+                  {
+                    [1,2,3].map(i => (
+                      <div key={i} className={`items-center flex justify-center border-white  text-center border rounded-full h-7 w-7 ${i === createStep && 'bg-white text-orange-500'}`}>
+                        <span>{i}</span>
+                      </div>
+                    ))  
+                  }
+                  </div>
+                </div>
+                <div className="p-3">
+                  {createStep === 1 && <FormBasicInfo />}
+                  {createStep === 2 && <FormProfile />}
+                  {createStep === 3 && <FormNextProfile />}
+                </div>
               </div>
             </div>
           </div>
