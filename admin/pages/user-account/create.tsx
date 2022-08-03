@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React from 'react'
-import AccountClockOutline from '../../components/icon/AccountClockOutline'
 import AccountSearchOutline from '../../components/icon/AccountSearchOutline'
 import ArrowLeftThick from '../../components/icon/ArrowLeftThick'
 import ArrowRightThick from '../../components/icon/ArrowRightThick'
@@ -18,147 +17,7 @@ import { NextPageWithLayout } from '../_app'
  * @profile { idcard, address, phone, idexpired, domicile, sex, birthdate, birthplace }
  */
 
-const UserAccount: NextPageWithLayout = () => {
-  const users = [
-    {
-      id: 1,
-      name: "Barrett Mccall",
-      username: "barret",
-      email: "odio.a@aol.couk",
-      profile_picture: "",
-      verified: false,
-      email_verified: false,
-      role: "",
-      created_at: "2020-01-01",
-      updated_at: "2020-01-01",
-      profile: {
-        idcard: "",
-        address: "",
-        phone: "",
-        idexpired: "",
-        domicile: "",
-        province: "",
-        city: "",
-        district: "",
-        village: "",
-      }
-    },
-    {
-      id: 2,
-      name: "Thomas Sykes",
-      username: "thomas",
-      email: "sed.leo@protonmail.net",
-      profile_picture: "",
-      verified: false,
-      email_verified: false,
-      role: "",
-      created_at: "2020-01-01",
-      updated_at: "2020-01-01",
-      profile: {
-        idcard: "",
-        address: "",
-        phone: "",
-        idexpired: "",
-        domicile: "",
-        province: "",
-        city: "",
-        district: "",
-        village: "",
-      }
-    },
-    {
-      id: 3,
-      name: "Thaddeus Simmons",
-      username: "thaddeus",
-      email: "enim.non@protonmail.com",
-      profile_picture: "",
-      verified: false,
-      email_verified: false,
-      role: "",
-      created_at: "2020-01-01",
-      updated_at: "2020-01-01",
-      profile: {
-        idcard: "",
-        address: "",
-        phone: "",
-        idexpired: "",
-        domicile: "",
-        province: "",
-        city: "",
-        district: "",
-        village: "",
-      }
-    },
-    {
-      id: 1,
-      name: "Barrett Mccall",
-      username: "barret",
-      email: "odio.a@aol.couk",
-      profile_picture: "",
-      verified: false,
-      email_verified: false,
-      role: "",
-      created_at: "2020-01-01",
-      updated_at: "2020-01-01",
-      profile: {
-        idcard: "",
-        address: "",
-        phone: "",
-        idexpired: "",
-        domicile: "",
-        province: "",
-        city: "",
-        district: "",
-        village: "",
-      }
-    },
-    {
-      id: 2,
-      name: "Thomas Sykes",
-      username: "thomas",
-      email: "sed.leo@protonmail.net",
-      profile_picture: "",
-      verified: false,
-      email_verified: false,
-      role: "",
-      created_at: "2020-01-01",
-      updated_at: "2020-01-01",
-      profile: {
-        idcard: "",
-        address: "",
-        phone: "",
-        idexpired: "",
-        domicile: "",
-        province: "",
-        city: "",
-        district: "",
-        village: "",
-      }
-    },
-    {
-      id: 3,
-      name: "Thaddeus Simmons",
-      username: "thaddeus",
-      email: "enim.non@protonmail.com",
-      profile_picture: "",
-      verified: false,
-      email_verified: false,
-      role: "",
-      created_at: "2020-01-01",
-      updated_at: "2020-01-01",
-      profile: {
-        idcard: "",
-        address: "",
-        phone: "",
-        idexpired: "",
-        domicile: "",
-        province: "",
-        city: "",
-        district: "",
-        village: "",
-      }
-    }
-  ]
+const CreateAccount: NextPageWithLayout = () => {
   const [btnHoverNext, setBtnHoverNext] = React.useState(false)
   const hoverNext = (status: boolean = false) => () => {setBtnHoverNext(status)}
   const [btnHoverBack, setBtnHoverBack] = React.useState(false)
@@ -303,7 +162,8 @@ const UserAccount: NextPageWithLayout = () => {
     <div className="p-2 sm:px-10">
         <div className="flex flex-col">
           <BreadCrumb className="font-roboto-opensans font-normal text-sm text-gray-500" activeClass="font-roboto-opensans font-normal text-sm text-gray-400" items={[
-            { item: "user account", href: "/", icon: () => <ShieldAccountOutline size={18} color="rgb(107 114 128)"/> }
+            { item: "user account", href: "/user-account", icon: () => <ShieldAccountOutline size={18} color="rgb(107 114 128)"/> },
+            { item: "create", href: "#" },
           ]} />
           <div className="mt-3 mb-5 flex flex-row justify-between">
             <div className="flex pt-2 justify-center items-center">
@@ -318,36 +178,8 @@ const UserAccount: NextPageWithLayout = () => {
               </Link>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row sm:gap-2">
-            <div className="sm:w-2/3">
-              <div className='w-full overflow-auto shadow bg-white rounded'>
-                <table className='table-auto w-full'>
-                  <thead className='bg-orange-200'>
-                    <tr>
-                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">name</th>
-                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">email</th>
-                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">status</th>
-                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">created at</th>
-                      <th className="text-center border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">action</th>
-                    </tr>
-                    
-                  </thead>
-                  <tbody>
-                    {users.map((user, index) => (
-                      <tr key={index}>
-                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.name}</td>
-                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.email}</td>
-                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.verified ? "verified" : "unverified"}</td>
-                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.created_at}</td>
-                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">#</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              
-            </div>
-            <div className="hidden sm:basis-1/3 sm:flex sm:flex-col">
+          <div className="flex flex-col">
+            <div className="w-full sm:hidden">
               <div className='shadow w-full rounded bg-white'>
                 <div className="p-2 flex flex-row justify-between bg-orange-200">
                   <h1 className='text-gray-500 font-bold'>Create User</h1>
@@ -374,7 +206,7 @@ const UserAccount: NextPageWithLayout = () => {
   )
 }
 
-UserAccount.getLayout = function (page) {
+CreateAccount.getLayout = function (page) {
   type componentProp = {lang: LangType}
   const MobileInput = ({lang}: componentProp) => {
     return (
@@ -406,4 +238,4 @@ UserAccount.getLayout = function (page) {
   } )}>{page}</MainLayout>)
 }
 
-export default UserAccount
+export default CreateAccount
