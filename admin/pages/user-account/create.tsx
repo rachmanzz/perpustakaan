@@ -62,9 +62,9 @@ const CreateAccount: NextPageWithLayout = () => {
       </div>
       {/* button right */}
       <div className="flex flex-row mt-10 justify-end">
-      <button onClick={()=>nextStep(2)} onMouseLeave={hoverNext()} onMouseEnter={hoverNext(true)} type="button" className="inline-flex items-center py-2.5 text-sm font-medium text-center text-orange-300 rounded  focus:outline-none hover:text-orange-500 ">
+      <button onClick={()=>nextStep(2)} type="button" className="inline-flex focus:opacity-50 items-center py-2.5 text-sm font-medium text-center focus:text-orange-300 rounded  focus:outline-none text-orange-500">
         Next
-          <ArrowRightThick color={btnHoverNext ? 'rgb(249 115 22)' : 'rgb(253 186 116)'} />
+          <ArrowRightThick color={'rgb(249 115 22)'} />
       </button>
       </div>
     </div>
@@ -101,13 +101,13 @@ const CreateAccount: NextPageWithLayout = () => {
         <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="date" />
       </div>
       <div className="flex flex-row mt-10 justify-between">
-        <button onClick={()=>nextStep(1)} onMouseLeave={hoverBack()} onMouseEnter={hoverBack(true)} type="button" className="inline-flex items-center py-2.5 text-sm font-medium text-center text-orange-300 rounded  focus:outline-none hover:text-orange-500 ">
-            <ArrowLeftThick color={btnHoverBack ? 'rgb(249 115 22)' : 'rgb(253 186 116)'}  />
+        <button onClick={()=>nextStep(1)} type="button" className="inline-flex focus:opacity-50 items-center py-2.5 text-sm font-medium text-center focus:text-orange-300 rounded  focus:outline-none text-orange-500">
+            <ArrowLeftThick color={'rgb(249 115 22)'}  />
             Back
         </button>
-        <button onClick={()=>nextStep(3)} onMouseLeave={hoverNext()} onMouseEnter={hoverNext(true)} type="button" className="inline-flex items-center py-2.5 text-sm font-medium text-center text-orange-300 rounded  focus:outline-none hover:text-orange-500 ">
+        <button onClick={()=>nextStep(3)} className="inline-flex focus:opacity-50 items-center py-2.5 text-sm font-medium text-center focus:text-orange-300 rounded  focus:outline-none text-orange-500">
           Next
-            <ArrowRightThick color={btnHoverNext ? 'rgb(249 115 22)' : 'rgb(253 186 116)'} />
+            <ArrowRightThick color={'rgb(249 115 22)'} />
         </button>
       </div>
     </div>
@@ -146,13 +146,13 @@ const CreateAccount: NextPageWithLayout = () => {
         </div>
       </div>
       <div className="flex flex-row mt-10 justify-between">
-        <button onClick={()=>nextStep(2)} onMouseLeave={hoverBack()} onMouseEnter={hoverBack(true)} type="button" className="inline-flex items-center py-2.5 text-sm font-medium text-center text-orange-300 rounded  focus:outline-none hover:text-orange-500 ">
-            <ArrowLeftThick color={btnHoverBack ? 'rgb(249 115 22)' : 'rgb(253 186 116)'}  />
+        <button onClick={()=>nextStep(2)} type="button" className="inline-flex focus:opacity-50 items-center py-2.5 text-sm font-medium text-center focus:text-orange-300   focus:outline-none text-orange-500">
+            <ArrowLeftThick color={'rgb(249 115 22)'}  />
             Back
         </button>
-        <button onMouseLeave={hoverNext()} onMouseEnter={hoverNext(true)} type="button" className="inline-flex hover:border hover:px-4 hover:py-1 hover:border-orange-500 hover:rounded-full items-center py-2.5 text-sm font-medium text-center text-orange-300 rounded  focus:outline-none hover:text-orange-500 ">
+        <button type="button" className="inline-flex hover:border hover:px-4 hover:py-1 focus:opacity-50 items-center py-2.5 text-sm font-medium text-center focus:outline-none text-orange-500 ">
           Create
-            <SaveCheckOutline size={30} color={btnHoverNext ? 'rgb(249 115 22)' : 'rgb(253 186 116)'} />
+            <SaveCheckOutline size={30} color="rgb(249 115 22)" />
         </button>
       </div>
         
@@ -194,31 +194,6 @@ const CreateAccount: NextPageWithLayout = () => {
 }
 
 CreateAccount.getLayout = function (page) {
-  type componentProp = {lang: LangType}
-  const MobileInput = ({lang}: componentProp) => {
-    return (
-      <div className="relative">
-          <span className="absolute inset-y-0 left-0 z-10 flex items-center">
-              <span className="py-2 pl-1">
-                  <AccountSearchOutline size={24} />
-              </span>
-          </span>
-          <input id="search-book" name="search" type="text" autoComplete="off" placeholder={lang('find_book_borrower')} required className="appearance-none rounded pl-8 pr-2 placeholder:text-[#F39508]/[50%] font-roboto-opensans placeholder:font-roboto-opensans relative w-full  py-2 bg-[#FFE6C0] placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none sm:text-sm" />
-      </div>
-    )
-  }
-  const DesktopInput = ({lang}: componentProp) => {
-    return (
-      <div className="relative">
-          <span className="absolute inset-y-0 left-0 z-10 flex items-center">
-              <span className="py-2 pl-1">
-                  <AccountSearchOutline size={24} />
-              </span>
-          </span>
-          <input id="search-book" name="search" type="text" autoComplete="off" placeholder={lang('find_book_borrower')} required className="appearance-none rounded pl-8 pr-2 w-full lg:w-1/2 placeholder:text-[#F39508]/[50%] font-roboto-opensans placeholder:font-roboto-opensans relative  py-2 bg-[#FFE6C0] rounded-t-md focus:outline-none sm:text-sm" />
-      </div>
-    )
-  } 
   return (<MainLayout leftComponent={() => (<h1>CREATE ACCOUNT</h1>)}>{page}</MainLayout>)
 }
 
