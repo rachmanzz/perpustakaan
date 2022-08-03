@@ -165,12 +165,7 @@ const CreateAccount: NextPageWithLayout = () => {
             { item: "user account", href: "/user-account", icon: () => <ShieldAccountOutline size={18} color="rgb(107 114 128)"/> },
             { item: "create", href: "#" },
           ]} />
-          <div className="mt-3 mb-5 flex flex-row justify-between">
-            <div className="flex pt-2 justify-center items-center">
-              <h1 className=" uppercase text-xl font-bold text-gray-500">User Account</h1>
-            </div>
-          </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col mt-5">
             <div className="w-full sm:hidden">
               <div className='shadow w-full rounded bg-white'>
                 <div className="p-2 flex flex-row justify-between bg-orange-200">
@@ -224,10 +219,7 @@ CreateAccount.getLayout = function (page) {
       </div>
     )
   } 
-  return (<MainLayout specific={(_, lang) => ({
-    mobileOnly: <MobileInput lang={lang}/>,
-    desktopOnly: <DesktopInput lang={lang}/>
-  } )}>{page}</MainLayout>)
+  return (<MainLayout leftComponent={() => (<h1>CREATE ACCOUNT</h1>)}>{page}</MainLayout>)
 }
 
 export default CreateAccount
