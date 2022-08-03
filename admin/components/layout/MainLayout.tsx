@@ -31,6 +31,12 @@ interface bothLayoutType extends componentType {
 }
 
 
+const checkUrl = (url: string, expected: string) => {
+    const regex = new RegExp(`^${expected}$|^${expected}/`);
+    return regex.test(url);
+}
+
+
 const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => {
     const {pathname} = useRouter()
     const leftElement = leftComponent && React.cloneElement(leftComponent, {className})
@@ -58,7 +64,7 @@ const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => 
                         const Icon = item.icon()
                         return (<div key={index}>
                             <Link href={item.url}>
-                                <a className={`appearance-none touch-action-none flex items-center justify-center rounded-full h-12 w-12 ${pathname == item.url ? 'bg-[#FFC876]': 'bg-focus-off'}`}><Icon /></a>
+                                <a className={`appearance-none touch-action-none flex items-center justify-center rounded-full h-12 w-12 ${checkUrl(pathname, item.url) ? 'bg-[#FFC876]': 'bg-focus-off'}`}><Icon /></a>
                             </Link>
                         </div>)
                     })}
@@ -96,7 +102,7 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
                         const Icon = item.icon()
                         return (<div key={index}>
                                 <Link href={item.url}>
-                                    <a className={`appearance-none touch-action-none flex items-center justify-center rounded-full h-12 w-12 ${pathname == item.url ? 'bg-[#FFC876]': 'bg-focus-off'}`}><Icon /></a>
+                                    <a className={`appearance-none touch-action-none flex items-center justify-center rounded-full h-12 w-12 ${checkUrl(pathname, item.url) ? 'bg-[#FFC876]': 'bg-focus-off'}`}><Icon /></a>
                                 </Link>
                             </div>)
                     })}
