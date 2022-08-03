@@ -169,14 +169,6 @@ const CreateAccount: NextPageWithLayout = () => {
             <div className="flex pt-2 justify-center items-center">
               <h1 className=" uppercase text-xl font-bold text-gray-500">User Account</h1>
             </div>
-            <div className="flex flex-row sm:hidden">
-                {/* button create */}
-              <Link href="/user-account/create">
-                <a className="inline-flex border border-orange-400 rounded py-1 px-3 text-orange-400 hover:border-orange-200 hover:text-orange-200 focus:text-orange-200 focus:border-orange-200">
-                  create account 
-                </a>
-              </Link>
-            </div>
           </div>
           <div className="flex flex-col">
             <div className="w-full sm:hidden">
