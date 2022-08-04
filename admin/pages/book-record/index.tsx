@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import BookSearch from '../../components/icon/BookSearch'
 import StarIcon from '../../components/icon/StarIcon'
@@ -34,8 +35,24 @@ const BookRecord: NextPageWithLayout = () => {
                 
               </div>
               <div className="flex flex-col w-full">
-                <h1 className="font-jakarta-sans font-bold uppercase">BUKU LAYANGAN</h1>
-                <div className="text-sm mt-1">ISBN 978-602-8828-40-6</div>
+                <div className="flex w-full flex-row  justify-between">
+                  <div>
+                    <div className="block md:hidden">
+                      <Link href="/book-record">
+                        <a className="text-orange-400 font-roboto-opensans underline font-bold text-lg">
+                          BUKU LAYANGAN
+                        </a>
+                      </Link>
+                    </div>
+                    <h1 className="font-jakarta-sans hidden md:block font-bold uppercase">BUKU LAYANGAN</h1>
+                    <div className="text-sm mt-1">ISBN 978-602-8828-40-6</div>
+                  </div>
+                  <div className="hidden md:block">
+                    <Link href="/book-record/detail">
+                      <a className="text-orange-400 font-roboto-opensans hover:text-white shadow hover:bg-orange-400 bg-orange-200 px-5 py-1 rounded-sm">detail</a>
+                    </Link>
+                  </div>
+                </div>
 
                 <div className="flex gap-5 flex-row">
                   <div className="mt-3 w-full relative">
