@@ -15,11 +15,14 @@ const BookRecord: NextPageWithLayout = () => {
             <div className="flex flex-row w-full gap-6 border-b border-orange-300 py-5">
               <div className=" w-28 md:w-32">
                 <div className="bg-gray-100 w-28 h-36 md:w-32 md:h-40 rounded-sm"></div>
-                <h1 className="mt-5">kategori</h1>
-                <div className="flex-wrap flex md:hidden">
-                  <span className="text-orange-400 m-1  text-xs font-bold underline font-roboto-opensans">sains</span>
-                  <span className="text-orange-400 m-1  text-xs font-bold underline font-roboto-opensans">komedi</span>
+                <div className="mt-5 flex flex-col md:hidden">
+                  <h1>kategori</h1>
+                  <div className="flex-wrap flex">
+                    <span className="text-orange-400 mr-1 mt-1  text-xs font-bold underline font-roboto-opensans">sains</span>
+                    <span className="text-orange-400 m-1  text-xs font-bold underline font-roboto-opensans">komedi</span>
+                  </div>
                 </div>
+                
               </div>
               <div className="flex flex-col w-full">
                 <h1 className="font-jakarta-sans uppercase">BUKU LAYANGAN</h1>
