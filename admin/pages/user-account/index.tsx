@@ -300,7 +300,7 @@ const UserAccount: NextPageWithLayout = () => {
     </div>
   )
   return (
-    <div className="p-2 sm:px-10">
+    <div className="px-2 pt-2 pb-8 sm:pb-4  sm:px-10">
         <div className="flex flex-col">
           <BreadCrumb className="font-roboto-opensans font-normal text-sm text-gray-500" activeClass="font-roboto-opensans font-normal text-sm text-gray-400" items={[
             { item: "user account", href: "/", icon: () => <ShieldAccountOutline size={18} color="rgb(107 114 128)"/> }
@@ -337,7 +337,7 @@ const UserAccount: NextPageWithLayout = () => {
                       <tr key={index}>
                         <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.name}</td>
                         <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.email}</td>
-                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.verified ? "verified" : "unverified"}</td>
+                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.verified ? "verified" : "&#10003; &#x2713; &check;"}</td>
                         <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.created_at}</td>
                         <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">#</td>
                       </tr>
@@ -376,7 +376,7 @@ const UserAccount: NextPageWithLayout = () => {
 
 UserAccount.getLayout = function (page) {
   type componentProp = {lang: LangType}
-  const MobileInput = ({lang}: componentProp) => {
+  const LeftComponent = ({lang}: componentProp) => {
     return (
       <div className="relative">
           <span className="absolute inset-y-0 left-0 z-10 flex items-center">
@@ -384,26 +384,11 @@ UserAccount.getLayout = function (page) {
                   <AccountSearchOutline size={24} />
               </span>
           </span>
-          <input id="search-book" name="search" type="text" autoComplete="off" placeholder={lang('find_book_borrower')} required className="appearance-none rounded pl-8 pr-2 placeholder:text-[#F39508]/[50%] font-roboto-opensans placeholder:font-roboto-opensans relative w-full  py-2 bg-[#FFE6C0] placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none sm:text-sm" />
-      </div>
-    )
-  }
-  const DesktopInput = ({lang}: componentProp) => {
-    return (
-      <div className="relative">
-          <span className="absolute inset-y-0 left-0 z-10 flex items-center">
-              <span className="py-2 pl-1">
-                  <AccountSearchOutline size={24} />
-              </span>
-          </span>
-          <input id="search-book" name="search" type="text" autoComplete="off" placeholder={lang('find_book_borrower')} required className="appearance-none rounded pl-8 pr-2 w-full lg:w-1/2 placeholder:text-[#F39508]/[50%] font-roboto-opensans placeholder:font-roboto-opensans relative  py-2 bg-[#FFE6C0] rounded-t-md focus:outline-none sm:text-sm" />
+          <input id="search-user" name="search" type="text" autoComplete="off" placeholder={lang('find_user_account')} required className="appearance-none rounded pl-8 pr-2 w-full lg:w-1/2 placeholder:text-[#F39508]/[50%] font-roboto-opensans placeholder:font-roboto-opensans relative  sm:text-lg py-2 bg-[#FFE6C0] rounded-t-md focus:outline-none" />
       </div>
     )
   } 
-  return (<MainLayout specific={(_, lang) => ({
-    mobileOnly: <MobileInput lang={lang}/>,
-    desktopOnly: <DesktopInput lang={lang}/>
-  } )}>{page}</MainLayout>)
+  return (<MainLayout leftComponent={(_, lang) => <LeftComponent lang={lang} />}>{page}</MainLayout>)
 }
 
 export default UserAccount

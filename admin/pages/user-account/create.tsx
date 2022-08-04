@@ -71,7 +71,7 @@ const CreateAccount: NextPageWithLayout = () => {
   )
 
   const FormProfile = () => (
-    <div className="flex flex-col">
+    <div className="flex pb-8 flex-col">
       <div className="flex flex-col">
         <label className="text-orange-500 font-roboto-opensans">ID Card</label>
         <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
