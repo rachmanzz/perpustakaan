@@ -8,7 +8,7 @@ const BookRecord: NextPageWithLayout = () => {
   return (
     <div className="px-2 pt-2 pb-8 sm:pb-4 sm:px-10">
         <div className="flex flex-col mt-2">
-          <div className="flex flex-col overflow-auto rounded border-t-2 bg-white px-10 py-4 border-orange-500">
+          <div className="flex flex-col overflow-auto rounded border-t-2 bg-white px-5 py-2 md:px-10 md:py-4 border-orange-500">
             {/* item */}
             
 
