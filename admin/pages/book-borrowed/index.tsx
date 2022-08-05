@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import AccountClockOutline from '../../components/icon/AccountClockOutline'
 import BookClockOutline from '../../components/icon/BookClockOutline'
@@ -22,27 +23,54 @@ const BorrowedBook: NextPageWithLayout = () => {
           </div>
           <div className="flex flex-col">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3">
-              <div className=" min-h-[240px] md:min-h-[260px] bg-[#FFE6C0]">
-                <div className="flex flex-col my-4 mx-2 justify-center items-center">
-                  <div className=" h-28 w-28 rounded-full border-2 border-white"></div>
-                  <div className="text-center mt-3 text-gray-500 text-xs font-bold">
-                    Muhammad Abdurrahman
-                  </div>
-                  <div className="text-center text-gray-500 text-sm">
-                    @rahman
-                  </div>
-                  <div className="w-full mt-10 bg-white grid grid-cols-2 gap-2 rounded mx-3 p-2">
-                    <div className="flex items-center flex-row">
-                      <BookClockOutline size={18}/>
-                      <div className="pl-2">3</div>
+              <Link href={"#"}>
+                <a className="hover:border-t-2 hover:border-orange-500 min-h-[240px] md:min-h-[260px] bg-[#FFE6C0]">
+                  <div className="flex flex-col my-4 mx-2 justify-center items-center">
+                    <div className=" h-28 w-28 rounded-full border-2 border-white"></div>
+                    <div className="text-center mt-3 text-gray-500 text-xs font-bold">
+                      Muhammad Abdurrahman
                     </div>
-                    <div className="flex items-center flex-row">
-                      <BookOpenVariant size={18}/>
-                      <div className="pl-2">3</div>
+                    <div className="text-center text-gray-500 text-sm">
+                      @rahman
+                    </div>
+                    <div className="w-full mt-10 bg-white grid grid-cols-2 gap-2 rounded mx-3 p-2">
+                      <div className="flex items-center flex-row">
+                        <BookClockOutline size={18}/>
+                        <div className="pl-2">3</div>
+                      </div>
+                      <div className="flex items-center flex-row">
+                        <BookOpenVariant size={18}/>
+                        <div className="pl-2">3</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </a>
+              </Link>
+
+              <Link href={"#"}>
+                <a className="hover:border-t-2 hover:border-orange-500 min-h-[240px] md:min-h-[260px] bg-[#FFE6C0]">
+                  <div className="flex flex-col my-4 mx-2 justify-center items-center">
+                    <div className=" h-28 w-28 rounded-full border-2 border-white"></div>
+                    <div className="text-center mt-3 text-gray-500 text-xs font-bold">
+                      Muhammad Abdurrahman
+                    </div>
+                    <div className="text-center text-gray-500 text-sm">
+                      @rahman
+                    </div>
+                    <div className="w-full mt-10 bg-white grid grid-cols-2 gap-2 rounded mx-3 p-2">
+                      <div className="flex items-center flex-row">
+                        <BookClockOutline size={18}/>
+                        <div className="pl-2">3</div>
+                      </div>
+                      <div className="flex items-center flex-row">
+                        <BookOpenVariant size={18}/>
+                        <div className="pl-2">3</div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+              
             </div>
           </div>
         </div>
