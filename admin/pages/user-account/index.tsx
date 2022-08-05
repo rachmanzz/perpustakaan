@@ -324,11 +324,11 @@ const UserAccount: NextPageWithLayout = () => {
                 <table className='table-auto w-full'>
                   <thead className='bg-orange-200'>
                     <tr>
-                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">name</th>
-                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">email</th>
-                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">status</th>
-                      <th className="text-left border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">created at</th>
-                      <th className="text-center border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">action</th>
+                      <th className="text-left  px-2 py-2 text-gray-500 font-roboto-opensans">name</th>
+                      <th className="text-left px-2 py-2 text-gray-500 font-roboto-opensans">email</th>
+                      <th className="text-left  px-2 py-2 text-gray-500 font-roboto-opensans">status</th>
+                      <th className="text-left  px-2 py-2 text-gray-500 font-roboto-opensans">created at</th>
+                      <th className="text-center  px-2 py-2 text-gray-500 font-roboto-opensans">action</th>
                     </tr>
                     
                   </thead>
