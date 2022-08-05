@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import BookSearch from '../../components/icon/BookSearch'
+import BookShelf from '../../components/icon/BookShelf'
 import StarIcon from '../../components/icon/StarIcon'
 import StarOutline from '../../components/icon/StarIcon'
+import BreadCrumb from '../../components/items/BreadCrumb'
 import MainLayout from '../../components/layout/MainLayout'
 import useLanguage, { LangType } from '../../i18n'
 import { NextPageWithLayout } from '../_app'
@@ -11,6 +13,22 @@ const BookRecord: NextPageWithLayout = () => {
   return (
     <div className="px-2 pt-2 pb-8 sm:pb-4 sm:px-10">
         <div className="flex flex-col mt-2">
+          <BreadCrumb className="font-roboto-opensans font-normal text-sm text-gray-500" activeClass="font-roboto-opensans font-normal text-sm text-gray-400" items={[
+              { item: "book record", href: "/", icon: () => <BookShelf size={18} color="rgb(107 114 128)"/> }
+            ]} />
+          <div className="mt-3 mb-5 flex flex-row justify-between">
+            <div className="flex pt-2 justify-center items-center">
+              <h1 className=" uppercase text-xl font-bold text-gray-500">Daftar Buku</h1>
+            </div>
+            <div className="flex flex-row">
+                {/* button create */}
+              <Link href="/user-account/create">
+                <a className="inline-flex border border-orange-400 rounded py-1 px-3 text-orange-400 hover:border-orange-200 hover:text-orange-200 focus:text-orange-200 focus:border-orange-200">
+                  tambah buku 
+                </a>
+              </Link>
+            </div>
+          </div>
           <div className="flex flex-col overflow-auto rounded border-t-2 bg-white px-5 py-2 md:px-10 md:py-4 border-orange-500">
             {/* item */}
             
