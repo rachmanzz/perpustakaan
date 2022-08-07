@@ -20,7 +20,7 @@ const BookRecord: NextPageWithLayout = () => {
             </div>
             <div className="flex flex-row">
                 {/* button create */}
-              <Link href="/user-account/create">
+              <Link href="/book-record/create">
                 <a className="inline-flex border border-orange-400 rounded py-1 px-3 text-orange-400 hover:border-orange-200 hover:text-orange-200 focus:text-orange-200 focus:border-orange-200">
                   tambah buku 
                 </a>
