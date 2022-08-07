@@ -4,6 +4,7 @@ import AccountClockOutline from '../../components/icon/AccountClockOutline'
 import AccountSearchOutline from '../../components/icon/AccountSearchOutline'
 import ArrowLeftThick from '../../components/icon/ArrowLeftThick'
 import ArrowRightThick from '../../components/icon/ArrowRightThick'
+import CheckIcon from '../../components/icon/CheckIcon'
 import SaveCheckOutline from '../../components/icon/SaveCheckOutline'
 import ShieldAccountOutline from '../../components/icon/ShieldAccountOutline'
 import BreadCrumb from '../../components/items/BreadCrumb'
@@ -118,7 +119,7 @@ const UserAccount: NextPageWithLayout = () => {
       username: "thomas",
       email: "sed.leo@protonmail.net",
       profile_picture: "",
-      verified: false,
+      verified: true,
       email_verified: false,
       role: "",
       created_at: "2020-01-01",
@@ -327,7 +328,7 @@ const UserAccount: NextPageWithLayout = () => {
                       <th className="text-left  px-2 py-2 text-gray-500 font-roboto-opensans">name</th>
                       <th className="text-left px-2 py-2 text-gray-500 font-roboto-opensans">email</th>
                       <th className="text-left  px-2 py-2 text-gray-500 font-roboto-opensans">status</th>
-                      <th className="text-left  px-2 py-2 text-gray-500 font-roboto-opensans">created at</th>
+                      <th className="text-left  px-2 py-2 min-w-[100px] text-gray-500 font-roboto-opensans">created at</th>
                       <th className="text-center  px-2 py-2 text-gray-500 font-roboto-opensans">action</th>
                     </tr>
                     
@@ -337,7 +338,7 @@ const UserAccount: NextPageWithLayout = () => {
                       <tr key={index}>
                         <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.name}</td>
                         <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.email}</td>
-                        <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.verified ? "verified" : "&#10003; &#x2713; &check;"}</td>
+                        <td className="border border-orange-50 px-2 py-2  text-gray-500 font-roboto-opensans"><div className="flex flex-row justify-center"><CheckIcon fill={user.verified ? '#F39508' : 'none'} stroke={user.verified ? '#F39508' : '#E6E6E6'} /></div></td>
                         <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">{user.created_at}</td>
                         <td className="border border-orange-50 px-2 py-2 text-gray-500 font-roboto-opensans">#</td>
                       </tr>
@@ -350,7 +351,7 @@ const UserAccount: NextPageWithLayout = () => {
             <div className="hidden sm:basis-1/3 sm:flex sm:flex-col">
               <div className='shadow w-full rounded bg-white'>
                 <div className="p-2 flex flex-row justify-between bg-orange-200">
-                  <h1 className='text-gray-500 font-bold'>Create User</h1>
+                  <h3 className='text-gray-500 font-bold'>Create User</h3>
                   <div className="flex gap-1 text-sm items-center justify-center flex-row">
                   {
                     [1,2,3].map(i => (
