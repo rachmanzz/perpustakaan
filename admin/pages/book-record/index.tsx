@@ -42,7 +42,7 @@ const BookRecord: NextPageWithLayout = () => {
                   <StarIcon size={18} filled={false} />  
                 </div>
                 <div className="mt-5 flex flex-col md:hidden">
-                  <h1 className="bg-orange-400 rounded-sm text-center text-white">kategori</h1>
+                  <h2 className="bg-orange-400 rounded-sm text-center uppercase text-white">category</h2>
                   <div className="flex-wrap justify-center flex">
                     <span className="text-orange-400 mr-1 mt-1  text-xs font-bold underline font-roboto-opensans">science</span>
                     <span className="text-orange-400 m-1  text-xs font-bold underline font-roboto-opensans">comedy</span>

@@ -6,7 +6,7 @@ if (typeof process.env.BASE_PATH !== 'undefined' && process.env.BASE_PATH !== 'n
     output: 'standalone',
     i18n: {
       locales: ['en', 'id'],
-      defaultLocale: 'id',
+      defaultLocale: 'en',
     },
     webpack: (config) => {
       config.resolve.fallback = { fs: false };
@@ -19,7 +19,7 @@ if (typeof process.env.BASE_PATH !== 'undefined' && process.env.BASE_PATH !== 'n
     output: 'standalone',
     i18n: {
       locales: ['en', 'id'],
-      defaultLocale: 'id',
+      defaultLocale: 'en',
     },
     webpack: (config) => {
       config.resolve.fallback = { fs: false };
