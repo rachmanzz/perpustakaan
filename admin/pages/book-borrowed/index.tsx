@@ -18,7 +18,7 @@ const BorrowedBook: NextPageWithLayout = () => {
               ]} />
           <div className="mt-3 mb-5 flex flex-row justify-between">
             <div className="flex pt-2 justify-center items-center">
-              <h1 className=" uppercase text-xl font-bold text-gray-500">DAFTAR PEMINJAM BUKU</h1>
+              <h1 className=" uppercase text-xl font-bold text-gray-500">list of borrower book</h1>
             </div>
           </div>
           <div className="flex flex-col">
