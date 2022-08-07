@@ -16,13 +16,13 @@ const BookRecord: NextPageWithLayout = () => {
             ]} />
           <div className="mt-3 mb-5 flex flex-row justify-between">
             <div className="flex pt-2 justify-center items-center">
-              <h1 className=" uppercase text-xl font-bold text-gray-500">Daftar Buku</h1>
+              <h1 className=" uppercase text-xl font-bold text-gray-500">Book List</h1>
             </div>
             <div className="flex flex-row">
                 {/* button create */}
               <Link href="/book-record/create">
                 <a className="inline-flex border border-orange-400 rounded py-1 px-3 text-orange-400 hover:border-orange-200 hover:text-orange-200 focus:text-orange-200 focus:border-orange-200">
-                  tambah buku 
+                  add book 
                 </a>
               </Link>
             </div>
@@ -44,8 +44,9 @@ const BookRecord: NextPageWithLayout = () => {
                 <div className="mt-5 flex flex-col md:hidden">
                   <h1 className="bg-orange-400 rounded-sm text-center text-white">kategori</h1>
                   <div className="flex-wrap justify-center flex">
-                    <span className="text-orange-400 mr-1 mt-1  text-xs font-bold underline font-roboto-opensans">sains</span>
-                    <span className="text-orange-400 m-1  text-xs font-bold underline font-roboto-opensans">komedi</span>
+                    <span className="text-orange-400 mr-1 mt-1  text-xs font-bold underline font-roboto-opensans">science</span>
+                    <span className="text-orange-400 m-1  text-xs font-bold underline font-roboto-opensans">comedy</span>
+                    <span className="text-orange-400 m-1  text-xs font-bold underline font-roboto-opensans">crime</span>
                   </div>
                 </div>
                 
@@ -56,16 +57,16 @@ const BookRecord: NextPageWithLayout = () => {
                     <div className="block md:hidden">
                       <Link href="/book-record">
                         <a className="text-orange-400 font-roboto-opensans underline font-bold text-lg">
-                          BUKU LAYANGAN
+                          Book Of The Day
                         </a>
                       </Link>
                     </div>
-                    <h1 className="font-jakarta-sans hidden md:block font-bold uppercase">BUKU LAYANGAN</h1>
+                    <h1 className="font-jakarta-sans hidden md:block font-bold uppercase">Book Of The Day</h1>
                     <div className="text-sm mt-1">ISBN 978-602-8828-40-6</div>
                   </div>
                   <div className="hidden md:block">
                     <Link href="/book-record/detail">
-                      <a className="text-orange-400 font-roboto-opensans hover:text-white shadow hover:bg-orange-400 bg-orange-200 px-5 py-1 rounded-sm">detail</a>
+                      <a className="text-orange-400 font-roboto-opensans hover:text-white shadow hover:bg-orange-400 bg-orange-200 px-5 py-1 rounded-sm">details</a>
                     </Link>
                   </div>
                 </div>
@@ -80,14 +81,13 @@ const BookRecord: NextPageWithLayout = () => {
                     </div>
                   </div>
                   <div className="md:w-8/12 lg:w-2/5 flex-col hidden md:flex">
-                    <h1 className="font-jakarta-sans font-bold">KATEGORI</h1>
+                    <h1 className="font-jakarta-sans uppercase font-bold">category</h1>
                     <div className="p-2 flex-wrap flex">
-                      <span className="bg-[#FFE6C0] m-1 rounded px-2 py-1 text-xs font-bold font-roboto-opensans">sains</span>
-                      <span className="bg-[#FFE6C0] m-1 rounded px-2 py-1 text-xs font-bold font-roboto-opensans">komedi</span>
-                      <span className="bg-[#FFE6C0] m-1 rounded px-2 py-1 text-xs font-bold font-roboto-opensans">sains</span>
-                      <span className="bg-[#FFE6C0] m-1 rounded px-2 py-1 text-xs font-bold font-roboto-opensans">komedi</span>
-                      <span className="bg-[#FFE6C0] m-1 rounded px-2 py-1 text-xs font-bold font-roboto-opensans">sains</span>
-                      <span className="bg-[#FFE6C0] m-1 rounded px-2 py-1 text-xs font-bold font-roboto-opensans">komedi</span>
+                      <span className="bg-[#FFE6C0] m-1 rounded px-2 py-1 text-xs font-bold font-roboto-opensans">science</span>
+                      <span className="bg-[#FFE6C0] m-1 rounded px-2 py-1 text-xs font-bold font-roboto-opensans">comedy</span>
+                      <span className="bg-[#FFE6C0] m-1 rounded px-2 py-1 text-xs font-bold font-roboto-opensans">crime</span>
+                      <span className="bg-[#FFE6C0] m-1 rounded px-2 py-1 text-xs font-bold font-roboto-opensans">fantasy</span>
+                      <span className="bg-[#FFE6C0] m-1 rounded px-2 py-1 text-xs font-bold font-roboto-opensans">horor</span>
                     </div>
                   </div>
                 </div>

@@ -13,10 +13,10 @@ const RecordNewBook: NextPageWithLayout = () => {
   const route = useRouter()
   const BookProfile = () => (
     <React.Fragment>
-      <h2 className="font-bold mb-2 uppercase">Data Buku</h2>
+      <h2 className="font-bold mb-2 uppercase">BOOK DATA</h2>
       <div className="flex flex-col xl:grid xl:grid-cols-2 xl:gap-5">
         <div className="flex mt-2 flex-col">
-            <label className="text-orange-500 font-roboto-opensans">Nama Buku</label>
+            <label className="text-orange-500 font-roboto-opensans">Book Name</label>
             <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
         </div>
         <div className="flex mt-2 flex-col">
@@ -24,23 +24,19 @@ const RecordNewBook: NextPageWithLayout = () => {
             <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
         </div>
         <div className="flex mt-2 flex-col">
-            <label className="text-orange-500 font-roboto-opensans">Kode Buku</label>
+            <label className="text-orange-500 font-roboto-opensans">Edition</label>
             <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
         </div>
         <div className="flex mt-2 flex-col">
-            <label className="text-orange-500 font-roboto-opensans">Edisi</label>
+            <label className="text-orange-500 font-roboto-opensans">Publisher</label>
             <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
         </div>
         <div className="flex mt-2 flex-col">
-            <label className="text-orange-500 font-roboto-opensans">Penerbit</label>
-            <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
-        </div>
-        <div className="flex mt-2 flex-col">
-            <label className="text-orange-500 font-roboto-opensans">Tanggal Terbit</label>
+            <label className="text-orange-500 font-roboto-opensans">Published in</label>
             <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="date" />
         </div>
         <div className="flex mt-2 flex-col">
-            <label className="text-orange-500 font-roboto-opensans">Bahasa</label>
+            <label className="text-orange-500 font-roboto-opensans">Book languange</label>
             <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
         </div>
       </div>
@@ -69,7 +65,7 @@ const RecordNewBook: NextPageWithLayout = () => {
             ]} />
           <div className="mt-3 mb-5 flex flex-row justify-between">
             <div className="flex pt-2 justify-center items-center">
-              <h1 className=" uppercase text-xl font-bold text-gray-500">Tambah Buku</h1>
+              <h1 className=" uppercase text-xl font-bold text-gray-500">ADD NEW BOOK</h1>
             </div>
             <div className="flex flex-row">
                
@@ -88,7 +84,7 @@ const RecordNewBook: NextPageWithLayout = () => {
 
                     <div className="flex flex-row mt-10 justify-end">
                       <button className="bg-orange-500 hover:bg-orange-400 text-white font-roboto-opensans font-normal text-sm md:text-lg px-4 py-2 rounded focus:outline-none focus:shadow-outline">
-                        Selanjutnya 
+                        Next 
                       </button>
                     </div>
                     
