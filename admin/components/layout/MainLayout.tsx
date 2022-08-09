@@ -7,7 +7,7 @@ import navigation from "../../libraries/navigation";
 import BellOutline from "../icon/BellOutline";
 import DropDownUI from "../items/DropDownUI";
 import "flag-icons/css/flag-icons.min.css"
-import ChevronIcon from "../icon/chevronIcon";
+import ChevronIcon from "../icon/ChevronIcon";
 
 
 type componentType = { children: React.ReactNode }
