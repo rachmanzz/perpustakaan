@@ -1,17 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
-import { type } from "os";
 import React, { useEffect, useState } from "react";
 import useLanguage, {LangType} from "../../i18n";
 import navigation from "../../libraries/navigation";
-import AccountCircleOutline from "../icon/AccountCircleOutline";
 import BellOutline from "../icon/BellOutline";
-import BookClockOutline from "../icon/BookClockOutline";
-import BookShelf from "../icon/BookShelf";
-import HomeOutline from "../icon/HomeOutline";
-import ShieldAccountOutline from "../icon/ShieldAccountOutline";
-import UserAccountOutline from "../icon/UserAccountOutline";
+import DropDownUI from "../items/DropDownUI";
+import "flag-icons/css/flag-icons.min.css"
+import ChevronIcon from "../icon/chevronIcon";
 
 
 type componentType = { children: React.ReactNode }
@@ -75,9 +71,32 @@ const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => 
 }
 
 const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => {
-    const {pathname} = useRouter()
+    const {pathname, locale, locales} = useRouter()
     const [heightSize, setHeightSize] = useState(400)
     const leftElement = leftComponent && React.cloneElement(leftComponent, {className})
+
+    const flagId = (currentLocale: string = 'en') => {
+        switch (currentLocale) {
+            case 'en':
+                return 'us'
+            case 'id':
+                return 'id'
+            default:
+                return 'us'
+        }
+
+    }
+
+    const langName = (lang: string) =>{
+        switch (lang) {
+            case 'id':
+                return 'indonesia'
+            case 'en':
+                return 'english'
+            default:
+                return 'english'
+        }
+    }
     
     useEffect(() => {
         setHeightSize(window.innerHeight)
@@ -109,10 +128,17 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
                 </div>
                 <div className="flex flex-col relative flex-1">
                     <div className="w-full top-0 z-50 border-b border-orange-300/20 pl-10 pr-20  flex items-center h-16">
-                        <div className="flex flex-row items-center w-full justify-between">
+                        <div className="flex fl ex-row items-center w-full justify-between">
                             <div className="w-full pr-12">{leftElement}</div>
                             <div className="flex flex-row gap-5">
                                 {/* bell icon */}
+                                {/*  */}
+                                <DropDownUI value={locale as keyof typeof locales} items={locales as string[]} listClassName="hover:bg-orange-100" renderItem={(item) => (<Link locale={item} href={`${pathname}`}><a className="flex py-3 mx-3 gap-3  items-center"><span className={`fi border fi-${flagId(item)}`}></span>{langName(item).toUpperCase()}</a></Link>) } outerClass="flex flex-col items-center rounded-full justify-center h-10 w-10">
+                                    {(flag) => <div className="flex items-center flex-row">
+                                            <span className={`fi fi-${flagId(locale)} h-10`}></span>
+                                            <ChevronIcon direction="down" size={24} />
+                                        </div>}
+                                </DropDownUI>
                                 <div className="flex items-center rounded-full justify-center h-10 w-10 bg-focus-off-dark">
                                     <BellOutline />
                                 </div>
