@@ -3,11 +3,13 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import BookSearch from '../../components/icon/BookSearch'
 import BookShelf from '../../components/icon/BookShelf'
+import ImagePlusOutline from '../../components/icon/ImagePlusOutline'
 import StarIcon from '../../components/icon/StarIcon'
 import BreadCrumb from '../../components/items/BreadCrumb'
 import MainLayout from '../../components/layout/MainLayout'
 import useLanguage, { LangType } from '../../i18n'
 import { NextPageWithLayout } from '../_app'
+import Dropzone from 'react-dropzone'
 
 const RecordNewBook: NextPageWithLayout = () => {
   const route = useRouter()
@@ -75,7 +77,22 @@ const RecordNewBook: NextPageWithLayout = () => {
             {/* item */}
             <div className="flex flex-col gap-3 md:gap-10  md:flex-row">
                 <div className="bg-white border-t-2 md:bg-inherit md:border-none flex items-center p-2 rounded overflow-hidden flex-col justify-center md:justify-start border-orange-500">
-                    <div className="h-[400px] w-[300px] md:h-[300px] md:w-[270px] bg-gray-300"></div>
+                    <div className="w-[250px] h-[320px] xl:h-[250px] xl:w-[200px] md:w-[250px] md:h-[280px] flex justify-center items-center bg-gray-100">
+                      {/* <button className="flex flex-col text-orange-450 md:opacity-50 focus:opacity-50 md:focus:opacity-100 md:hover:opacity-100  text-center justify-center items-center flex-wrap">
+                        
+                      </button> */}
+                      <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+                        {({ getRootProps, getInputProps }) => (
+                          <React.Fragment>
+                            <div {...getRootProps({className: "flex h-full opacity-100 focus:opacity-50 md:opacity-50 md:hover:opacity-100 md:focus:opacity-100  justify-center text-center items-center flex-col flex-wrap p-2"})}>
+                              <input {...getInputProps()} />
+                              <ImagePlusOutline />
+                              <p className="text-orange-450">add image</p>
+                            </div>
+                          </React.Fragment>
+                        )}
+                      </Dropzone>
+                    </div>
                 </div>
 
                 <div className="bg-white border-t-2 w-full md:pl-5  p-2 rounded overflow-hidden  md:border-t-0 md:border-l md:rounded-none md:border-orange-200 border-orange-500">

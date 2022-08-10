@@ -25,7 +25,7 @@ export default function DropDownUI<T extends any[], R extends keyof T>({button =
             setValue(currentValue)
             setIsOpen(false)
         }
-    }, [currentValue])
+    }, [value, currentValue])
     useEffect(() => {
         const eventHandler = (ev: MouseEvent|TouchEvent) => {
             if (isOpen && !ref.current!!.contains(ev.target as Node)) {

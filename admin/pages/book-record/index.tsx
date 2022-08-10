@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import BookSearch from '../../components/icon/BookSearch'
 import BookShelf from '../../components/icon/BookShelf'
+import ImagePlusOutline from '../../components/icon/ImagePlusOutline'
 import StarIcon from '../../components/icon/StarIcon'
 import BreadCrumb from '../../components/items/BreadCrumb'
 import MainLayout from '../../components/layout/MainLayout'
@@ -21,7 +22,7 @@ const BookRecord: NextPageWithLayout = () => {
             <div className="flex flex-row">
                 {/* button create */}
               <Link href="/book-record/create">
-                <a className="inline-flex border border-orange-400 rounded py-1 px-3 text-orange-400 hover:border-orange-200 hover:text-orange-200 focus:text-orange-200 focus:border-orange-200">
+                <a id="add-book-btn" className="inline-flex border border-orange-400 rounded py-1 px-3 text-orange-400 hover:border-orange-200 hover:text-orange-200 focus:text-orange-200 focus:border-orange-200">
                   add book 
                 </a>
               </Link>
@@ -33,7 +34,8 @@ const BookRecord: NextPageWithLayout = () => {
 
             <div className="flex flex-row w-full gap-6 border-b border-orange-300 py-5">
               <div className=" w-28 md:w-32">
-                <div className="bg-gray-100 w-28 h-36 md:w-32 md:h-40 rounded-sm"></div>
+                <div className="bg-gray-100 flex justify-center items-center w-28 h-36 md:w-32 md:h-40 rounded-sm">
+                </div> 
                 <div className="justify-center mt-1 flex flex-row">
                   <StarIcon size={18} filled />
                   <StarIcon size={18} filled />  
@@ -73,7 +75,7 @@ const BookRecord: NextPageWithLayout = () => {
 
                 <div className="flex gap-5 flex-row">
                   <div className="mt-3 w-full relative">
-                    <span className="bg-orange-400 shadow py-1 px-2 absolute text-sm font-roboto-opensans text-white right-4 top-0 rounded">edition 1</span>
+                    <span className="bg-orange-400 shadow py-1 px-2 absolute text-sm font-roboto-opensans text-white right-4 top-0 rounded">description</span>
                     <div className="pt-4">
                       <div className="bg-[#FFE6C0] rounded">
                         <p className="pt-6 pb-3 px-3 min-h-[110px] ">a web application concept. Bibliophile or not, this is the place to read books of your choice and share it with your friends</p>
