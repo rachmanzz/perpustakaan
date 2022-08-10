@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import BookSearch from '../../components/icon/BookSearch'
 import BookShelf from '../../components/icon/BookShelf'
+import ImagePlusOutline from '../../components/icon/ImagePlusOutline'
 import StarIcon from '../../components/icon/StarIcon'
 import BreadCrumb from '../../components/items/BreadCrumb'
 import MainLayout from '../../components/layout/MainLayout'
@@ -33,7 +34,8 @@ const BookRecord: NextPageWithLayout = () => {
 
             <div className="flex flex-row w-full gap-6 border-b border-orange-300 py-5">
               <div className=" w-28 md:w-32">
-                <div className="bg-gray-100 w-28 h-36 md:w-32 md:h-40 rounded-sm"></div>
+                <div className="bg-gray-100 flex justify-center items-center w-28 h-36 md:w-32 md:h-40 rounded-sm">
+                </div> 
                 <div className="justify-center mt-1 flex flex-row">
                   <StarIcon size={18} filled />
                   <StarIcon size={18} filled />  
