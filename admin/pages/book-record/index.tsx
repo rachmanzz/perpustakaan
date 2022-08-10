@@ -21,7 +21,7 @@ const BookRecord: NextPageWithLayout = () => {
             <div className="flex flex-row">
                 {/* button create */}
               <Link href="/book-record/create">
-                <a className="inline-flex border border-orange-400 rounded py-1 px-3 text-orange-400 hover:border-orange-200 hover:text-orange-200 focus:text-orange-200 focus:border-orange-200">
+                <a id="add-book-btn" className="inline-flex border border-orange-400 rounded py-1 px-3 text-orange-400 hover:border-orange-200 hover:text-orange-200 focus:text-orange-200 focus:border-orange-200">
                   add book 
                 </a>
               </Link>
@@ -73,7 +73,7 @@ const BookRecord: NextPageWithLayout = () => {
 
                 <div className="flex gap-5 flex-row">
                   <div className="mt-3 w-full relative">
-                    <span className="bg-orange-400 shadow py-1 px-2 absolute text-sm font-roboto-opensans text-white right-4 top-0 rounded">edition 1</span>
+                    <span className="bg-orange-400 shadow py-1 px-2 absolute text-sm font-roboto-opensans text-white right-4 top-0 rounded">description</span>
                     <div className="pt-4">
                       <div className="bg-[#FFE6C0] rounded">
                         <p className="pt-6 pb-3 px-3 min-h-[110px] ">a web application concept. Bibliophile or not, this is the place to read books of your choice and share it with your friends</p>

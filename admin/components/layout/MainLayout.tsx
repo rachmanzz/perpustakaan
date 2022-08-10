@@ -60,7 +60,7 @@ const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => 
                         const Icon = item.icon()
                         return (<div key={index}>
                             <Link href={item.url}>
-                                <a className={`appearance-none touch-action-none flex items-center justify-center rounded-full h-12 w-12 ${checkUrl(pathname, item.url) ? 'bg-[#FFC876]': 'bg-focus-off'}`}><Icon /></a>
+                                <a id={item.id} className={`appearance-none touch-action-none flex items-center justify-center rounded-full h-12 w-12 ${checkUrl(pathname, item.url) ? 'bg-[#FFC876]': 'bg-focus-off'}`}><Icon /></a>
                             </Link>
                         </div>)
                     })}
@@ -121,7 +121,7 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
                         const Icon = item.icon()
                         return (<div key={index}>
                                 <Link href={item.url}>
-                                    <a className={`appearance-none touch-action-none flex items-center justify-center rounded-full h-12 w-12 ${checkUrl(pathname, item.url) ? 'bg-[#FFC876]': 'bg-focus-off'}`}><Icon /></a>
+                                    <a id={item.id} className={`appearance-none touch-action-none flex items-center justify-center rounded-full h-12 w-12 ${checkUrl(pathname, item.url) ? 'bg-[#FFC876]': 'bg-focus-off'}`}><Icon /></a>
                                 </Link>
                             </div>)
                     })}
