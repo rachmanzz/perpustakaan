@@ -10,7 +10,7 @@
     ],
     "buildpacks": [
         {
-            "url": "https://github.com/rachmanzz/perpustakaan.git:api"
+            "url": "git@github.com:rachmanzz/perpustakaan.git:api"
         }
     ],
     "scripts": {
