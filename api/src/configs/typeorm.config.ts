@@ -6,7 +6,7 @@ config();
 
 const configService = new ConfigService();
 
-export default new DataSource(
+const dataSource = new DataSource(
     {
         migrationsTableName: "migrations",
         type: "postgres",
@@ -16,7 +16,7 @@ export default new DataSource(
         database: configService.get("DB_NAME"),
         password: configService.get("DB_PASSWORD"),
         entities: [__dirname + '/../**/*.entity.{js,ts}'],
-        migrations: [__dirname + '/../databases/migrations/*{.ts,.js}'],
+        migrations: [__dirname + '/../migrations/*{.ts,.js}'],
         extra: {
         charset: 'utf8mb4_unicode_ci',
         },
@@ -25,3 +25,12 @@ export default new DataSource(
 
     }
 );
+
+export const databaseProviders = [
+    {
+        provide: 'DATA_SOURCE',
+        useFactory: async () => dataSource.initialize(),
+    }
+];
+
+export default dataSource;
