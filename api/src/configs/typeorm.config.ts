@@ -40,7 +40,7 @@ if (BUILD_PLATFORM === "heroku") {
         ssl: {
             rejectUnauthorized: false
         },
-        synchronize: false,
+        synchronize: true,
         logging: false
     });
 }
