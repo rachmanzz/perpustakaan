@@ -5,7 +5,8 @@
     "repository": "https://github.com/rachmanzz/perpustakaan",
     "env": {
         "APP_BASE": {
-            "required": true
+            "required": true,
+            "value": "api"
         },
         "BUILD_PLATFORM": {
             "value": "heroku"
