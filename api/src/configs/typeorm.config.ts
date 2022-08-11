@@ -6,26 +6,8 @@ config();
 
 const configService = new ConfigService();
 
-let dataSource: DataSource;
-const BUILD_PLATFORM = configService.get("BUILD_PLATFORM", null);
-if (BUILD_PLATFORM === "heroku") {
-    dataSource = new DataSource({
-        type: "postgres",
-        url: configService.get("DATABASE_URL"),
-        entities: [__dirname + '/../**/*.entity.{js,ts}'],
-        migrations: [__dirname + '/../migrations/*{.ts,.js}'],
-        extra: {
-        charset: 'utf8mb4_unicode_ci',
-        },
-        ssl: {
-            rejectUnauthorized: false
-        },
-        synchronize: false,
-        logging: false
-    });
-}
-
-dataSource = new DataSource(
+// default connection
+let dataSource: DataSource = new DataSource(
     {
         migrationsTableName: "migrations",
         type: "postgres",
@@ -44,6 +26,24 @@ dataSource = new DataSource(
 
     }
 );
+const BUILD_PLATFORM = configService.get("BUILD_PLATFORM");
+if (BUILD_PLATFORM === "heroku") {
+    // heroku connection
+    dataSource = new DataSource({
+        type: "postgres",
+        url: process.env.DATABASE_URL,
+        entities: [__dirname + '/../**/*.entity.{js,ts}'],
+        migrations: [__dirname + '/../migrations/*{.ts,.js}'],
+        extra: {
+        charset: 'utf8mb4_unicode_ci',
+        },
+        ssl: {
+            rejectUnauthorized: false
+        },
+        synchronize: false,
+        logging: false
+    });
+}
 
 export const databaseProviders = [
     {
