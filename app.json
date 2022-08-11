@@ -20,8 +20,5 @@
         {
             "url": "heroku/nodejs"
         }
-    ],
-    "scripts": {
-        "heroku-postbuild": "npm run typeorm:migrate"
-    }
+    ]
 }
