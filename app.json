@@ -13,11 +13,6 @@
             "plan": "heroku-postgresql:hobby-dev"
         }
     ],
-    "buildpacks": [
-        {
-            "url": "https://github.com/rachmanzz/perpustakaan"
-        }
-    ],
     "scripts": {
         "heroku-postbuild": "npm run typeorm:migrate"
     }
