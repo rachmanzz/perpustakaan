@@ -23,6 +23,9 @@ export class User extends BaseEntity {
     email: string;
 
     @Column()
+    password: string;
+
+    @Column()
     email_verified: boolean
 
     @Column()
