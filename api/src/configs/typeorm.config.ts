@@ -17,6 +17,9 @@ if (BUILD_PLATFORM === "heroku") {
         extra: {
         charset: 'utf8mb4_unicode_ci',
         },
+        ssl: {
+            rejectUnauthorized: false
+        },
         synchronize: false,
         logging: false
     });
