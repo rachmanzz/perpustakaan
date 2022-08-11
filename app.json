@@ -3,6 +3,11 @@
     "version": "1.0",
     "keywords": ["perpustakaan", "nodejs", "nestjs"],
     "repository": "https://github.com/rachmanzz/perpustakaan",
+    "env": {
+        "APP_BASE": {
+            "required": true
+        }
+    }, 
     "addons": [
         {
             "plan": "heroku-postgresql:hobby-dev"
@@ -10,7 +15,7 @@
     ],
     "buildpacks": [
         {
-            "url": "git@github.com:rachmanzz/perpustakaan.git:api"
+            "url": "https://github.com/rachmanzz/perpustakaan"
         }
     ],
     "scripts": {
