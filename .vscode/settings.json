@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "entity",
-        "vscode"
+        "vscode",
+        "dto"
     ]
 }
