@@ -1,4 +1,5 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Profile } from "./profile.entity";
 
 export enum UserType {
     SUPERUSER = "superuser",
@@ -33,6 +34,9 @@ export class User extends BaseEntity {
 
     @Column({enum: UserType, default: UserType.VISITOR})
     user_type: UserType
+
+    @OneToMany(() => Profile, profile => profile.user)
+    profiles: Profile[];
 
     @CreateDateColumn()
     created_at: Date;
