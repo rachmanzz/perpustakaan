@@ -4,6 +4,7 @@
         "vscode",
         "dto",
         "services",
-        "providers"
+        "providers",
+        "migrations"
     ]
 }
