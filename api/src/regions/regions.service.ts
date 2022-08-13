@@ -9,8 +9,9 @@ export class RegionsService {
   constructor(
     @Inject("REGION_REPOSITORY") private readonly regionRepository: Repository<Region>,
   ) {}
-  create(createRegionDto: CreateRegionDto) {
-    return 'This action adds a new region';
+  async create(dto: CreateRegionDto): Promise<Region> {
+    if (dto.regionOrder > 0 && !dto.parentId) return null
+    return await this.regionRepository.save(dto);
   }
 
   findAll() {
