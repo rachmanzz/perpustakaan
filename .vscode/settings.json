@@ -3,6 +3,7 @@
         "entity",
         "vscode",
         "dto",
-        "services"
+        "services",
+        "providers"
     ]
 }
