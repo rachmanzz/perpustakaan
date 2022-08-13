@@ -1,4 +1,6 @@
+import { Region } from "../../regions/entities/region.entity";
 import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Card } from "./card.entity";
 import { User } from "./user.entity";
 
 
@@ -30,6 +32,12 @@ export class Profile extends BaseEntity {
 
     @ManyToOne(() => User, user => user.profiles, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
     user: User;
+
+    @ManyToOne(() => Card, card => card.profiles, { onDelete: "RESTRICT", onUpdate: 'CASCADE' })
+    card: Card;
+
+    @ManyToOne(() => Region, region => region.profiles)
+    region: Region;
 
     @Column()
     address: string;

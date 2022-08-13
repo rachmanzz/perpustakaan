@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Profile } from "../../users/entities/profile.entity";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, TreeChildren, TreeParent } from "typeorm";
 
 
 export enum RegionType {
@@ -27,4 +28,13 @@ export class Region extends BaseEntity {
 
     @Column()
     region_order: number;
+
+    @OneToMany(() => Profile, profile => profile.region)
+    profiles: Profile[];
+
+    @TreeChildren()
+    children: Region[];
+
+    @TreeParent()
+    parent: Region;
 }
