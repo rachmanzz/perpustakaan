@@ -24,7 +24,7 @@ describe('RegionsService', () => {
   it('should create a region', async () => {
     const dto: CreateRegionDto = {
       name: 'Test Region',
-      regionOrder: 0,
+      region_order: 0,
       code: '1000000',
       type: RegionType.COUNTRY
     }
@@ -32,6 +32,5 @@ describe('RegionsService', () => {
     expect(typeof region.id).toBe("number")
     expect(region.name).toBe('Test Region')
     expect(region.region_order).toBe(0)
-    expect(region.parent).toBeNull()
   })
 });
