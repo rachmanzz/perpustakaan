@@ -1,8 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm';
-import RepositoryMock from '../test-utils/repository-mock.utils';
 import { CreateRegionDto } from './dto/create-region.dto';
-import { Region, RegionType } from './entities/region.entity';
+import { RegionType } from './entities/region.entity';
+import { regionProviders } from './region.providers.mock';
 import { RegionsService } from './regions.service';
 
 describe('RegionsService', () => {
@@ -30,28 +29,11 @@ describe('RegionsService', () => {
   //   })
   // }
 
-  const mockedRegionRepository = RepositoryMock({saveResolve: (dto: CreateRegionDto) => {
-    if (dto.parentId) {
-      const {parentId, regionOrder, ...props} = dto
-      return {
-        id: Math.floor(Math.random() * 100) + 1,
-        ...props,
-        region_order: regionOrder,
-        parent: { id: parentId }
-      }
-    }
-    const {regionOrder, ...props} = dto
-    return {
-      id: Math.floor(Math.random() * 100) + 1,
-      region_order: regionOrder,
-      ...props,
-      parent: null
-    }
-  }})
+  
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [RegionsService, { provide: "REGION_REPOSITORY", useValue: mockedRegionRepository }],
+      providers: [RegionsService, ...regionProviders],
     }).compile();
 
     service = module.get<RegionsService>(RegionsService);

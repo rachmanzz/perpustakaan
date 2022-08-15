@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { DatabaseModule } from '../database.module';
-import { regionProviders } from './region.providers';
+import { regionProviders } from './region.providers.mock';
 import { RegionsController } from './regions.controller';
 import { RegionsService } from './regions.service';
 
@@ -10,10 +9,7 @@ describe('RegionsController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [RegionsController],
-      providers: [RegionsService, {
-        provide: "REGION_REPOSITORY",
-        useValue: {}
-      }],
+      providers: [RegionsService, ...regionProviders],
     }).compile();
 
     controller = module.get<RegionsController>(RegionsController);
