@@ -11,7 +11,7 @@ export class RegionsService {
   ) {}
   async create(dto: CreateRegionDto): Promise<Region> {
     if (dto.regionOrder > 0 && !dto.parentId) return null
-    return await this.regionRepository.save(dto);
+    return await this.regionRepository.save(dto)
   }
 
   findAll() {

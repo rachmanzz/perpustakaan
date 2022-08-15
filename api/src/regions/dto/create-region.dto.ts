@@ -14,5 +14,5 @@ export class CreateRegionDto {
     regionOrder: number;
 
     @ApiProperty({required: false})
-    parentId: number;
+    parentId?: number;
 }
