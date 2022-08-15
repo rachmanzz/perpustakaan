@@ -16,4 +16,9 @@ describe('UsersService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it("should return boolen of registered user", async () => {
+    const result = await service.hasRegisteredUser();
+    expect(result).toBe(true);
+  })
 });
