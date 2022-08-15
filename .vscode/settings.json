@@ -1,0 +1,10 @@
+{
+    "conventionalCommits.scopes": [
+        "entity",
+        "vscode",
+        "dto",
+        "services",
+        "providers",
+        "migrations"
+    ]
+}
