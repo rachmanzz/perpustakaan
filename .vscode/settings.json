@@ -5,6 +5,7 @@
         "dto",
         "services",
         "providers",
-        "migrations"
+        "migrations",
+        "modules"
     ]
 }
