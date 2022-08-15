@@ -7,28 +7,6 @@ import { RegionsService } from './regions.service';
 describe('RegionsService', () => {
   let service: RegionsService;
 
-  // const mockedRegionRepository1 = {
-  //   // id random number between 1 and 100
-  //   save : jest.fn((dto: CreateRegionDto) => {
-  //     if (dto.parentId) {
-  //       const {parentId, regionOrder, ...props} = dto
-  //       return Promise.resolve({
-  //         id: Math.floor(Math.random() * 100) + 1,
-  //         ...props,
-  //         region_order: regionOrder,
-  //         parent: { id: parentId }
-  //       })
-  //     }
-  //     const {regionOrder, ...props} = dto
-  //     return Promise.resolve({
-  //       id: Math.floor(Math.random() * 100) + 1,
-  //       region_order: regionOrder,
-  //       ...props,
-  //       parent: null
-  //     })
-  //   })
-  // }
-
   
 
   beforeEach(async () => {
