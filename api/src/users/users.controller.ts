@@ -12,9 +12,4 @@ export class UsersController {
     const hasUser = await this.usersService.hasRegisteredUser();
     return hasUser;
   }
-
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
 }
