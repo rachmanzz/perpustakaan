@@ -1,5 +1,6 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, BeforeInsert, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Profile } from "./profile.entity";
+import * as bcrypt from 'bcrypt';
 
 export enum UserType {
     SUPERUSER = "superuser",
@@ -8,6 +9,8 @@ export enum UserType {
     VISITOR = "visitor"
 
 }
+
+const saltOrRounds = 10;
 
 @Entity()
 export class User extends BaseEntity {
@@ -37,6 +40,11 @@ export class User extends BaseEntity {
 
     @OneToMany(() => Profile, profile => profile.user)
     profiles: Profile[];
+
+    @BeforeInsert()
+    async hashPassword() {
+        this.password = this.password ?  await bcrypt.hash(this.password, saltOrRounds) : null;
+    }
 
     @CreateDateColumn()
     created_at: Date;
