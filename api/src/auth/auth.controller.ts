@@ -1,6 +1,6 @@
 import { Body, Controller, Post, VERSION_NEUTRAL } from '@nestjs/common';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
-import { User, UserType } from 'src/users/entities/user.entity';
+import { CreateUserDto } from '../users/dto/create-user.dto';
+import { User, UserType } from '../users/entities/user.entity';
 import { AuthService } from './auth.service';
 
 @Controller({ path: 'auth', version: VERSION_NEUTRAL })
