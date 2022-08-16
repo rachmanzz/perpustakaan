@@ -2,13 +2,25 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from '../users/users.service';
 import { userProviders } from '../users/user.providers.mock';
 import { AuthService } from './auth.service';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { JwtModule, JwtService } from '@nestjs/jwt';
+import { LocalStrategy } from './local.strategy';
+import { JwtStrategy } from './jwt.strategy';
+import { PassportModule } from '@nestjs/passport';
 
 describe('AuthService', () => {
   let service: AuthService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AuthService, UsersService, ...userProviders],
+      imports: [
+        PassportModule,
+        JwtModule.register({
+          secret: process.env.SECRET || 'secret',
+          signOptions: { expiresIn: "24h" }
+        })
+      ],
+      providers: [AuthService, UsersService, LocalStrategy, JwtStrategy, ...userProviders],
     }).compile();
 
     service = module.get<AuthService>(AuthService);
