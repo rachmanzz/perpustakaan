@@ -16,7 +16,8 @@ export class UsersService {
     return count > 0;
   }
   async create(type: UserType = UserType.VISITOR, createUserDto: CreateUserDto) {
-    return await this.userRepository.save({...createUserDto, user_type: type})
+    const user  = this.userRepository.create({...createUserDto, user_type: type, email_verified: false})
+    return await this.userRepository.save(user);
   }
 
   findAll() {
