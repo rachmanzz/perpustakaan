@@ -1,7 +1,12 @@
-import { Body, Controller, Post, VERSION_NEUTRAL } from '@nestjs/common';
+import { Body, Controller, Post, Request,
+  UseGuards, VERSION_NEUTRAL } from '@nestjs/common';
 import { CreateUserDto } from '../users/dto/create-user.dto';
 import { User, UserType } from '../users/entities/user.entity';
 import { AuthService } from './auth.service';
+import { LoginDto } from './dto/login.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { LocalAuthGuard } from './local-auth.guard';
+
 
 @Controller({ path: 'auth', version: VERSION_NEUTRAL })
 export class AuthController {
@@ -16,5 +21,11 @@ export class AuthController {
     } catch (error) {
       return error;
     }
+  }
+
+  @UseGuards(LocalAuthGuard)
+  @Post('login')
+  async login(@Request() req) {
+    return this.authService.login(req.user);
   }
 }
