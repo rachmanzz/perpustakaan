@@ -24,6 +24,10 @@ export class UsersService {
     return `This action returns all users`;
   }
 
+  async findUser(email: string): Promise<User> {
+    return await this.userRepository.findOne({where: {email}, select: ['name', 'password', 'email', 'verified', 'email_verified', 'id', 'user_type']});
+  }
+
   findOne(id: number) {
     return `This action returns a #${id} user`;
   }
