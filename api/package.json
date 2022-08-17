@@ -87,6 +87,11 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
+    "moduleNameMapper": {
+      "^@common/(.*)$": "<rootDir>/common/$1",
+      "^@apps/(.*)$": "<rootDir>/$1"
+
+    },
     "testEnvironment": "node"
   }
 }
