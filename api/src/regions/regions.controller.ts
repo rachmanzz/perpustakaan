@@ -1,15 +1,43 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, VERSION_NEUTRAL } from '@nestjs/common';
 import { RegionsService } from './regions.service';
 import { CreateRegionDto } from './dto/create-region.dto';
 import { UpdateRegionDto } from './dto/update-region.dto';
+import { RegionType } from './entities/region.entity';
+import { ApiBearerAuth } from '@nestjs/swagger';
+import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
 
-@Controller('regions')
+function regionOrderRules(dto: CreateRegionDto) {
+  if (dto.type === RegionType.COUNTRY) {
+    if (typeof dto.parent_id !== 'undefined') throw new ReferenceError('Parent id shouldn`t to set')
+    return 0;
+  }
+  if (typeof dto.parent_id === 'undefined') throw new ReferenceError('Parent id should to set')
+  switch(dto.type) {
+    case RegionType.PROVINCE:
+      return 1;
+    case RegionType.CITY:
+      return 2;
+    case RegionType.DISTRICT:
+      return 2;
+    case RegionType.SUB_DISTRICT:
+      return 3;
+    case RegionType.VILLAGE:
+      return 4;
+    case RegionType.URBAN_VILLAGE:
+      return 4;
+  }
+}
+
+@Controller({path: 'regions', version: VERSION_NEUTRAL})
 export class RegionsController {
   constructor(private readonly regionsService: RegionsService) {}
 
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
   @Post()
   create(@Body() createRegionDto: CreateRegionDto) {
-    return this.regionsService.create(createRegionDto);
+    const order = regionOrderRules(createRegionDto)
+    return this.regionsService.create(createRegionDto, order);
   }
 
   @Get()
