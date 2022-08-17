@@ -13,6 +13,13 @@ async function bootstrap() {
       .setDescription("API documentation")
       .setVersion('1.0')
       .addTag('library, book')
+      .addBearerAuth({ 
+        type: 'http',
+        name: 'Authorization',
+        scheme: 'Bearer',
+        bearerFormat: 'Bearer',
+        in: 'Header'
+      }, 'access-token')
       .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('swagger/api', app, document);
