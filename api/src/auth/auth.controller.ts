@@ -3,8 +3,6 @@ import { Body, Controller, Post, Request,
 import { CreateUserDto } from '../users/dto/create-user.dto';
 import { User, UserType } from '../users/entities/user.entity';
 import { AuthService } from './auth.service';
-import { LoginDto } from './dto/login.dto';
-import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './local-auth.guard';
 
 
