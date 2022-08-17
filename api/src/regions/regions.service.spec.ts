@@ -24,11 +24,10 @@ describe('RegionsService', () => {
   it('should create a region', async () => {
     const dto: CreateRegionDto = {
       name: 'Test Region',
-      region_order: 0,
       code: '1000000',
       type: RegionType.COUNTRY
     }
-    const region = await service.create(dto)
+    const region = await service.create(dto, 0)
     expect(typeof region.id).toBe("number")
     expect(region.name).toBe('Test Region')
     expect(region.region_order).toBe(0)
