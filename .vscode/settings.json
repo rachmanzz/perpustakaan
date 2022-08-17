@@ -6,6 +6,7 @@
         "services",
         "providers",
         "migrations",
-        "modules"
+        "modules",
+        "controllers"
     ]
 }
