@@ -9,13 +9,12 @@ export class RegionsService {
   constructor(
     @Inject("REGION_REPOSITORY") private readonly regionRepository: Repository<Region>,
   ) {}
-  async create(dto: CreateRegionDto): Promise<Region> {
-    if (dto.region_order > 0 && !dto.parent_id) return null
+  async create(dto: CreateRegionDto, order: number): Promise<Region> {
     if (dto.parent_id) {
       const {parent_id, ...props} = dto
-      return await this.regionRepository.save({...props, parent: { id: parent_id }})
+      return await this.regionRepository.save({...props, region_order: order, parent: { id: parent_id }})
     }
-    return await this.regionRepository.save(dto)
+    return await this.regionRepository.save({...dto, region_order: order})
   }
 
   findAll() {
