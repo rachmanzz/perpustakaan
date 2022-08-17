@@ -10,9 +10,6 @@ export class CreateRegionDto {
     @ApiProperty({ enum: RegionType})
     type: RegionType;
 
-    @ApiProperty({ minimum: 0})
-    region_order: number;
-
     @ApiProperty({required: false})
     parent_id?: number;
 }
