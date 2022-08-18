@@ -1,3 +1,4 @@
+import { Profile } from "@apps/users/entities/profile.entity";
 import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Region } from "./region.entity";
 
@@ -19,6 +20,9 @@ export class Address extends BaseEntity {
 
     @ManyToOne(() => Region, region => region.addresses)
     region: Region;
+
+    @ManyToOne(() => Profile, profile => profile.addresses)
+    profile: Profile;
 
     @CreateDateColumn()
     created_at: Date;
