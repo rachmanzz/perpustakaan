@@ -40,23 +40,39 @@ export class RegionsController {
     return this.regionsService.create(createRegionDto, order);
   }
 
-  @Get()
-  findAll() {
-    return this.regionsService.findAll();
-  }
-
+  
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.regionsService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.regionsService.findOne(+id);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
+  @Get('parent/:id')
+  async findByParentId(@Param('id') id: string) {
+    return await this.regionsService.findRegionsByParrentId(+id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
+  @Get('order-region/:order')
+  async findByRegionOrder(@Param('order') order: string) {
+    return await this.regionsService.findByOrderRegion(+order);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRegionDto: UpdateRegionDto) {
-    return this.regionsService.update(+id, updateRegionDto);
+  async update(@Param('id') id: string, @Body() updateRegionDto: UpdateRegionDto) {
+    return await this.regionsService.update(+id, updateRegionDto);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.regionsService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return await this.regionsService.remove(+id);
   }
 }
