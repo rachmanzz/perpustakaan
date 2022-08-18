@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { CreateRegionDto } from './dto/create-region.dto';
 import { UpdateRegionDto } from './dto/update-region.dto';
 import { Region } from './entities/region.entity';
@@ -17,19 +17,26 @@ export class RegionsService {
     return await this.regionRepository.save({...dto, region_order: order})
   }
 
-  findAll() {
-    return `This action returns all regions`;
+  async findOne(id: number) {
+    return await this.regionRepository.findOne({where: {id}})
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} region`;
+  async findByOrderRegion(order: number) {
+    return await this.regionRepository.findOne({where: {region_order: order}})
   }
 
-  update(id: number, updateRegionDto: UpdateRegionDto) {
-    return `This action updates a #${id} region`;
+  async findRegionsByParrentId(parent_id: number, whereName?: string) {
+    let where = {parent: {id: parent_id}} as {[key: string]: any}
+    if (whereName) where.name = ILike(`%${whereName}%`)
+    return await this.regionRepository.find({where})
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} region`;
+  async update(id: number, updateRegionDto: UpdateRegionDto) {
+    await this.regionRepository.update(id, {...updateRegionDto})
+    return this.findOne(id)
+  }
+
+  async remove(id: number) {
+    return await this.regionRepository.delete(id)
   }
 }
