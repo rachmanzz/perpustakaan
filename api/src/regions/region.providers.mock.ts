@@ -1,4 +1,4 @@
-import RepositoryMock from "../test-utils/repository-mock.utils"
+import RepositoryMock from "../common/test-utils/repository-mock.utils"
 import { CreateRegionDto } from "./dto/create-region.dto"
 
 const mockedRegionRepository = RepositoryMock({saveResolve: (dto: any) => {
