@@ -1,5 +1,5 @@
 import { Profile } from "../../users/entities/profile.entity";
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, TreeChildren, TreeParent } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, TreeChildren, TreeParent, UpdateDateColumn } from "typeorm";
 import { Address } from "./address.entity";
 
 
@@ -38,4 +38,10 @@ export class Region extends BaseEntity {
 
     @TreeParent()
     parent: Region;
+
+    @CreateDateColumn()
+    created_at: Date;
+
+    @UpdateDateColumn()
+    updated_at: Date;
 }
