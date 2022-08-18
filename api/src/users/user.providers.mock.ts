@@ -1,4 +1,4 @@
-import RepositoryMock from "../test-utils/repository-mock.utils";
+import RepositoryMock from "../common/test-utils/repository-mock.utils";
 
 const mockedRegionRepository = RepositoryMock({
     countResolve: Math.floor(Math.random() * 100) + 1
