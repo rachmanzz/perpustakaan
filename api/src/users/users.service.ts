@@ -3,11 +3,15 @@ import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserType } from './entities/user.entity';
+import { Card } from './entities/card.entity';
+import { Profile } from './entities/profile.entity';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @Inject('USER_REPOSITORY') private readonly userRepository: Repository<User>
+    @Inject('USER_REPOSITORY') private readonly userRepository: Repository<User>,
+    @Inject('CARD_REPOSITORY') private readonly cardRepository: Repository<Card>,
+    @Inject('PROFILE_REPOSITORY') private readonly profileRepository: Repository<Profile>
   ) {}
 
   async hasRegisteredUser(): Promise<boolean> {
@@ -20,23 +24,7 @@ export class UsersService {
     return await this.userRepository.save(user);
   }
 
-  findAll() {
-    return `This action returns all users`;
-  }
-
   async findUser(email: string): Promise<User> {
     return await this.userRepository.findOne({where: {email}, select: ['name', 'password', 'email', 'verified', 'email_verified', 'id', 'user_type']});
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
-
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
   }
 }
