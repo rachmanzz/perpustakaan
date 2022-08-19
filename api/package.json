@@ -19,7 +19,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm": "ts-node ./node_modules/typeorm/cli",
+    "typeorm": "ts-node --project ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli",
     "typeorm:migrate": "npm run typeorm migration:run -- -d ./src/configs/typeorm.config.ts",
     "typeorm:generate": "npm run typeorm -- -d ./src/configs/typeorm.config.ts migration:generate ./src/migrations/$npm_config_name",
     "typeorm:create": "npm run typeorm -- migration:create ./src/migrations/$npm_config_name",
@@ -69,7 +69,7 @@
     "ts-jest": "28.0.5",
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
-    "tsconfig-paths": "4.0.0",
+    "tsconfig-paths": "^4.0.0",
     "typescript": "^4.3.5"
   },
   "jest": {
@@ -90,7 +90,6 @@
     "moduleNameMapper": {
       "^@common/(.*)$": "<rootDir>/common/$1",
       "^@apps/(.*)$": "<rootDir>/$1"
-
     },
     "testEnvironment": "node"
   }
