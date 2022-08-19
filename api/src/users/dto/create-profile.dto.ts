@@ -1,3 +1,4 @@
+import { CreateAddressDto } from "@apps/regions/dto/create-address.dto";
 import { ApiProperty } from "@nestjs/swagger";
 export class CreateProfileDto {
     @ApiProperty()
@@ -18,19 +19,9 @@ export class CreateProfileDto {
     @ApiProperty()
     lifetime: boolean;
 
-    @ApiProperty()
+    @ApiProperty({required: false})
     expired_card: Date;
 
-    @ApiProperty()
-    address: string;
-
-    @ApiProperty()
-    address_region_id: number;
-
-    @ApiProperty()
-    domicile: string;
-
-    @ApiProperty()
-    domicile_region_id: number;
-
 }
+
+export type CreateProfileAndAddressDto = CreateProfileDto & CreateAddressDto
