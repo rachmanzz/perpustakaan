@@ -9,10 +9,13 @@ export class CreateAddressDto {
     type: AddressType;
 
     @ApiProperty()
-    region_id: number;
+    postal_code: string;
 
     @ApiProperty()
-    profile_id: number;
+    region_id: number;
+
+    @ApiProperty({ required: false})
+    profile_id?: number;
 
 
 }
