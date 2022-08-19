@@ -6,13 +6,17 @@ import { Card } from './entities/card.entity';
 import { Profile } from './entities/profile.entity';
 import { CreateCardDto } from './dto/create-card.dto';
 import { UpdateCardDto } from './dto/update-card.dto';
+import { RegionsService } from '@apps/regions/regions.service';
+import { CreateProfileAndAddressDto } from './dto/create-profile.dto';
+import { UpdateProfileDto } from './dto/update-profile.dto';
 
 @Injectable()
 export class UsersService {
   constructor(
     @Inject('USER_REPOSITORY') private readonly userRepository: Repository<User>,
     @Inject('CARD_REPOSITORY') private readonly cardRepository: Repository<Card>,
-    @Inject('PROFILE_REPOSITORY') private readonly profileRepository: Repository<Profile>
+    @Inject('PROFILE_REPOSITORY') private readonly profileRepository: Repository<Profile>,
+    private readonly regionService: RegionsService
   ) {}
 
   async hasRegisteredUser(): Promise<boolean> {
@@ -33,7 +37,7 @@ export class UsersService {
   async findCard(cardName: string): Promise<Card[]> {
     return await this.cardRepository.find({where: { card_name: ILike(cardName) }})
   }
-  async findCardById(cardId: number): Promise<Card> {
+  async findOneCard(cardId: number): Promise<Card> {
     return await this.cardRepository.findOne({where: { id: cardId }})
   }
 
@@ -53,7 +57,27 @@ export class UsersService {
     return card
   }
 
-  async findProfile(userId: number): Promise<Profile> {
-    return await this.profileRepository.findOne({where: { user: { id: userId }}})
+  async createProfile(dto: CreateProfileAndAddressDto): Promise<Profile> {
+    const {name, type, postal_code, region_id,...profileDto} = dto
+    const profile = await this.profileRepository.save({...profileDto})
+    await this.regionService.createAddress({name, type, postal_code, region_id, profile_id: profile.id})
+    return await this.profileRepository.findOne({where: { id: profile.id }, relations: ['address']})
   }
+
+  async findOneProfile(profileId: number): Promise<Profile> {
+    return await this.profileRepository.findOne({where: { id: profileId }, relations: ['address']})
+  }
+
+  async updateProfile(profileId: number, dto: UpdateProfileDto): Promise<Profile> {
+    await this.profileRepository.update(profileId, dto)
+    return await this.profileRepository.findOne({where: { id: profileId }})
+  }
+
+  async deleteProfile(profileId: number): Promise<Profile> {
+    const profile = await this.profileRepository.findOne({where: { id: profileId }})
+    await this.profileRepository.delete(profileId)
+    return profile
+  }
+
+
 }
