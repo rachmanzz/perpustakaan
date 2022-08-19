@@ -1,13 +1,17 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ILike, Repository } from 'typeorm';
+import { CreateAddressDto } from './dto/create-address.dto';
 import { CreateRegionDto } from './dto/create-region.dto';
+import { UpdateAddressDto } from './dto/update-address.dto';
 import { UpdateRegionDto } from './dto/update-region.dto';
+import { Address } from './entities/address.entity';
 import { Region } from './entities/region.entity';
 
 @Injectable()
 export class RegionsService {
   constructor(
     @Inject("REGION_REPOSITORY") private readonly regionRepository: Repository<Region>,
+    @Inject("ADDRESS_REPOSITORY") private readonly addressRepository: Repository<Address>
   ) {}
   async create(dto: CreateRegionDto, order: number): Promise<Region> {
     if (dto.parent_id) {
@@ -39,4 +43,35 @@ export class RegionsService {
   async remove(id: number) {
     return await this.regionRepository.delete(id)
   }
+
+
+  async createAddress(dto: CreateAddressDto) {
+    const {region_id, profile_id, ...props} = dto
+    const region = await this.findOne(region_id)
+    if (!region) throw new Error('Region not found')
+    if (region.region_order !== 4) throw new Error('Address can be created only for village')
+    return await this.addressRepository.save({...props, region, profile: {id: profile_id}})
+  }
+
+  async findAddress(id: number) {
+    return await this.addressRepository.findOne({where: {id}})
+  }
+
+  async findAddresses(profile_id: number) {
+    return await this.addressRepository.find({where: {profile: {id: profile_id}}})
+  }
+
+  async updateAddress(id: number, updateAddressDto: UpdateAddressDto) {
+    await this.addressRepository.update(id, {...updateAddressDto})
+    return this.findAddress(id)
+  }
+
+  async removeAddress(id: number) {
+    const address = await this.findAddress(id)
+    if (!address) throw new Error('Address not found')
+    await this.addressRepository.delete(id)
+    return address
+  }
+
+
 }

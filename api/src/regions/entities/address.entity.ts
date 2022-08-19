@@ -1,9 +1,9 @@
 import { Profile } from "@apps/users/entities/profile.entity";
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Region } from "./region.entity";
 
 export enum AddressType {
-    RESIDENCE = "residence",
+    RESIDENCECARD = "residence-card",
     DOMICILE = "domicile"
 }
 
@@ -15,13 +15,18 @@ export class Address extends BaseEntity {
     @Column()
     name: string;
 
-    @Column({enum: AddressType, default: AddressType.RESIDENCE})
+    @Column({enum: AddressType, default: AddressType.RESIDENCECARD})
     type: AddressType;
 
+    @Column()
+    postal_code: string;
+
     @ManyToOne(() => Region, region => region.addresses)
+    @JoinColumn({name: 'region_id'})
     region: Region;
 
     @ManyToOne(() => Profile, profile => profile.addresses)
+    @JoinColumn({name: 'profile_id'})
     profile: Profile;
 
     @CreateDateColumn()
