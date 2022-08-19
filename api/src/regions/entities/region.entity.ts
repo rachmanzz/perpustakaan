@@ -1,4 +1,3 @@
-import { Profile } from "../../users/entities/profile.entity";
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, TreeChildren, TreeParent, UpdateDateColumn } from "typeorm";
 import { Address } from "./address.entity";
 
