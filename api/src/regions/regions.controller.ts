@@ -5,6 +5,8 @@ import { UpdateRegionDto } from './dto/update-region.dto';
 import { RegionType } from './entities/region.entity';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@common/guards/jwt-auth.guard';
+import { CreateAddressDto } from './dto/create-address.dto';
+import { UpdateAddressDto } from './dto/update-address.dto';
 
 function regionOrderRules(dto: CreateRegionDto) {
   if (dto.type === RegionType.COUNTRY) {
@@ -75,4 +77,34 @@ export class RegionsController {
   async remove(@Param('id') id: string) {
     return await this.regionsService.remove(+id);
   }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
+  @Post('address')
+  async createAddress(@Param('regionId') regionId: string, @Body() createAddressDto: CreateAddressDto) {
+    return await this.regionsService.createAddress(createAddressDto);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
+  @Get('address/:id')
+  async findAddress(@Param('id') id: string) {
+    return await this.regionsService.findAddress(+id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
+  @Patch('address/:id')
+  async updateAddress(@Param('id') id: string, @Body() updateAddressDto: UpdateAddressDto) {
+    return await this.regionsService.updateAddress(+id, updateAddressDto);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access-token')
+  @Delete('address/:id')
+  async removeAddress(@Param('id') id: string) {
+    return await this.regionsService.removeAddress(+id);
+  }
+
+
 }
