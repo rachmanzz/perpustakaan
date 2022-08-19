@@ -9,6 +9,7 @@ import { regionProviders } from './region.providers';
     DatabaseModule
   ],
   controllers: [RegionsController],
-  providers: [ ...regionProviders,RegionsService]
+  providers: [ ...regionProviders,RegionsService],
+  exports: [ RegionsService ]
 })
 export class RegionsModule {}
