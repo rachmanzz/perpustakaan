@@ -1,5 +1,4 @@
-import { Region } from "../../regions/entities/region.entity";
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Card } from "./card.entity";
 import { User } from "./user.entity";
 import { Address } from "@apps/regions/entities/address.entity";
@@ -31,10 +30,12 @@ export class Profile extends BaseEntity {
     @Column({nullable: true, default: null})
     expired_card: Date;
 
-    @ManyToOne(() => User, user => user.profiles, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+    @OneToOne(() => User, user => user.profile, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+    @JoinColumn({ name: 'user_id' })
     user: User;
 
     @ManyToOne(() => Card, card => card.profiles, { onDelete: "RESTRICT", onUpdate: 'CASCADE' })
+    @JoinColumn({ name: 'card_id' })
     card: Card;
 
     @OneToMany(() => Address, address => address.profile)
