@@ -1,4 +1,4 @@
-import { BaseEntity, BeforeInsert, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, BeforeInsert, Column, CreateDateColumn, Entity, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Profile } from "./profile.entity";
 import * as bcrypt from 'bcrypt';
 
@@ -38,8 +38,8 @@ export class User extends BaseEntity {
     @Column({enum: UserType, default: UserType.VISITOR})
     user_type: UserType
 
-    @OneToMany(() => Profile, profile => profile.user)
-    profiles: Profile[];
+    @OneToOne(() => Profile, profile => profile.user)
+    profile: Profile;
 
     @BeforeInsert()
     async hashPassword() {

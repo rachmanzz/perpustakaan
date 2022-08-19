@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ILike, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserType } from './entities/user.entity';
 import { Card } from './entities/card.entity';
 import { Profile } from './entities/profile.entity';
@@ -52,5 +51,9 @@ export class UsersService {
     const card = await this.cardRepository.findOne({where: { id: cardId }})
     await this.cardRepository.delete(cardId)
     return card
+  }
+
+  async findProfile(userId: number): Promise<Profile> {
+    return await this.profileRepository.findOne({where: { user: { id: userId }}})
   }
 }
