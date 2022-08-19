@@ -50,6 +50,7 @@ export class RegionsService {
     const region = await this.findOne(region_id)
     if (!region) throw new Error('Region not found')
     if (region.region_order !== 4) throw new Error('Address can be created only for village')
+    if (!profile_id) throw new Error('Profile is required')
     return await this.addressRepository.save({...props, region, profile: {id: profile_id}})
   }
 
