@@ -19,6 +19,19 @@ module.exports = {
       },
       colors: {
         'orange-450': '#F39508',
+      }, 
+      keyframes: {
+        shake: {
+          '20%, 60%': {
+            transform: 'translate3d(-2px, 0, 0)',
+          },
+          '40%, 80%': {
+            transform: 'translate3d(2px, 0, 0)',
+          }
+        }
+      },
+      animation: {
+        'shake': 'shake 0.5s',
       }
     },
   },
