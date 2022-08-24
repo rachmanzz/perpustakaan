@@ -14,5 +14,6 @@
     "search_book_identifier": "search book name | ISBN | user identifier",
     "search_book_by_book_identifier": "search book name | ISBN | publisher | author",
     "find_book_borrower": "find book borrower",
-    "find_user_account": "find user account"
+    "find_user_account": "find user account",
+    "unauthorized": "unauthorized: email address or password is incorrect"
 }
