@@ -7,6 +7,7 @@
         "providers",
         "migrations",
         "modules",
-        "controllers"
+        "controllers",
+        "taildwind"
     ]
 }
