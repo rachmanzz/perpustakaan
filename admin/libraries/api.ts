@@ -1,4 +1,5 @@
-import axios, {AxiosRequestHeaders, AxiosRequestConfig, AxiosError} from 'axios'
+import axios, {AxiosRequestHeaders, AxiosRequestConfig, AxiosResponse} from 'axios'
+import { getToken } from './safeStorage'
 
 type MethodWithBodyProps<T> = {
     method: 'post' | 'put' | 'patch',
@@ -30,7 +31,7 @@ const useApi = (auth: boolean = false, baseUrl?: string) =>  async<T extends obj
     }
 
     if (auth) {
-        const token = localStorage.getItem('access-token');
+        const token = getToken();
         if (!token) {
             throw new Error('No token found in localStorage');
         }
