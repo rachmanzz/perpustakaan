@@ -5,6 +5,7 @@ import { VersioningType } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
 
 
   if (process.env.NODE_ENV === 'development') {
