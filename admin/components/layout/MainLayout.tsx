@@ -56,7 +56,7 @@ const MobileVersion = ({children, leftComponent, className}: bothLayoutType) => 
                 </div>
             </div>
             <div className="fixed py-2 px-6 flex flex-row justify-between bg-[#FBD9A5] h-16 shadow-mobile-nav w-full bottom-0 z-50">
-                    {navigation.map((item, index) => {
+                    {navigation.filter((item) => item.hidden !== 'mobile').map((item, index) => {
                         const Icon = item.icon()
                         return (<div key={index}>
                             <Link href={item.url}>
@@ -117,7 +117,7 @@ const DestopVersion = ({children, leftComponent, className}: bothLayoutType) => 
                             <Image alt="logo" src={ process.env.NEXT_PUBLIC_TINY_SQUARE_LOGO || require('../svg/logo.svg' )}/>
                         </div>
                     </div>
-                    {navigation.map((item, index) => {
+                    {navigation.filter((item) => item.hidden !== 'desktop').map((item, index) => {
                         const Icon = item.icon()
                         return (<div key={index}>
                                 <Link href={item.url}>
