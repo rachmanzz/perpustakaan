@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { ReactElement, ReactNode } from 'react'
 import { NextPage } from 'next'
 import Head from 'next/head'
+import WrapperProvider from '../components/providers/WrapperProvider'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -19,7 +20,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <Head>
         <title>{process.env.NEXT_PUBLIC_APP_TITLE || process.env.NEXT_PUBLIC_APP_NAME || "perpustakaan"}</title>
       </Head>
-      {getLayout(<Component {...pageProps} />)}
+      <WrapperProvider>
+        {getLayout(<Component {...pageProps} />)}
+      </WrapperProvider>
     </>
   )
 }
