@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -8,6 +9,7 @@ import { useAlert } from "../../components/providers/WrapperProvider";
 import Reading from "../../components/svg-img/Reading"; 
 import useLanguage from "../../i18n";
 import useApi from "../../libraries/api";
+import { saveToken } from "../../libraries/safeStorage";
 
 
 export default function Login() {
@@ -43,6 +45,27 @@ export default function Login() {
             return
         }
         setLoading(true)
+
+        try {
+            const { data } = await api('auth/login', { email, password })
+            if (!data.accessToken) {
+                alert.push('missing access token', 'error', 5000);
+                setLoading(false)
+                return
+            }
+            saveToken(data.accessToken)
+            routePush('/')
+        } catch (error) {
+            setLoading(false)
+            if (error instanceof AxiosError) {
+                if (error.response?.status === 401) {
+                    alert.push(lang('unauthorized'), 'error', 5000);
+                    return
+                }
+            }
+            alert.push(lang('unknown_error'), 'error', 5000);
+
+        }
         
 
 
@@ -134,7 +157,7 @@ export default function Login() {
                             return (
                                 <React.Fragment key={index}>
                                     {index > 0 && <span className="mx-2">|</span>}
-                                    <Link href={`/${item}/auth/login`} locale={locale}>
+                                    <Link href={`/auth/login`} locale={item}>
                                         <a  className={`text-sm text-gray-900 font-bold font-jakarta-sans ${item !== locale ? 'text-[#F39508] underline' : ''} lang-${item}`}>{item}</a>
                                     </Link>
                                 </React.Fragment>
