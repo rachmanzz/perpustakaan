@@ -1,6 +1,4 @@
 
-import Head from 'next/head'
-import Image from 'next/image'
 import MainLayout from '../components/layout/MainLayout'
 import styles from '../styles/Home.module.css'
 import { NextPageWithLayout } from './_app'
@@ -27,5 +25,14 @@ Home.getLayout = function (page) {
   }
   return (<MainLayout both={leftComponent}>{page}</MainLayout>)
 }
+
+// export const getServerSideProps = async () => {
+//   // method post
+//   const res = await fetch(
+//     'https://api.github.com/repos/vercel/next.js', {
+//       method: 'POST',
+//     }
+//   )
+// }
 
 export default Home
