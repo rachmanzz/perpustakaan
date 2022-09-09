@@ -3,6 +3,7 @@ import {nanoid} from "nanoid";
 import useApi from "../../libraries/api";
 import { useRouter } from "next/router";
 import {AxiosError} from 'axios'
+import { removeToken } from "../../libraries/safeStorage";
 
 
 type AlertContextType = "success" | "error" | "warning" | "info" | "default";
@@ -95,6 +96,7 @@ const WrapperProvider: FC<{children: any, timeup?: number}> = ({ children, timeu
                 setLoginStatus('authorized')
 
             } catch (error) {
+                
                 if (error instanceof AxiosError) {
                     if (error.response && error.response.statusText === 'Unauthorized') {
                         route.push('auth/login')
@@ -104,7 +106,13 @@ const WrapperProvider: FC<{children: any, timeup?: number}> = ({ children, timeu
                 } else if (error instanceof Error && error.message === "No token found in localStorage") {
                     route.push('auth/login')
                 } else {
-                    dispatch("ALERT-SHOW", { message: `unkown error. please try again`, type: "error", timeup: 3000})
+                    const checkError = error as any
+                    if ('message' in checkError && checkError.message === 'Malformed UTF-8 data') {
+                        removeToken()
+                        route.push('auth/login')
+                    } else {
+                        dispatch("ALERT-SHOW", { message: `unkown error. please try again`, type: "error", timeup: 3000})
+                    }
                 }
             }
         }
