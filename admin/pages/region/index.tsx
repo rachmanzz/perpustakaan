@@ -189,80 +189,14 @@ const Region: NextPageWithLayout = () => {
   }
 
 
-  const FormBasicInfo = () => (
+  const FormCountry = () => (
     <div className="flex flex-col">
-      <div className="flex flex-col">
+      <div className="flex mt-2 flex-col">
+        <label className="text-orange-500 font-roboto-opensans">Code</label>
+        <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
+      </div>
+      <div className="flex mt-2 flex-col">
         <label className="text-orange-500 font-roboto-opensans">Name</label>
-        <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
-      </div>
-      <div className="flex mt-2 flex-col">
-        <label className="text-orange-500 font-roboto-opensans">Username</label>
-        <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
-      </div>
-      <div className="flex mt-2 flex-col">
-        <label className="text-orange-500 font-roboto-opensans">Email</label>
-        <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
-      </div>
-      {/* button right */}
-      <div className="flex flex-row mt-10 justify-end">
-      <button onClick={()=>nextStep(2)} onMouseLeave={hoverNext()} onMouseEnter={hoverNext(true)} type="button" className="inline-flex items-center py-2.5 text-sm font-medium text-center text-orange-300 rounded  focus:outline-none hover:text-orange-500 ">
-        Next
-          <ArrowRightThick color={btnHoverNext ? 'rgb(249 115 22)' : 'rgb(253 186 116)'} />
-      </button>
-      </div>
-    </div>
-  )
-
-  const FormProfile = () => (
-    <div className="flex flex-col">
-      <div className="flex flex-col">
-        <label className="text-orange-500 font-roboto-opensans">ID Card</label>
-        <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
-      </div>
-      <div className="flex mt-2 flex-col">
-        <label className="text-orange-500 font-roboto-opensans">ID Expired On</label>
-        <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="date" />
-      </div>
-      <div className="flex mt-2 flex-col">
-        <label className="text-orange-500 font-roboto-opensans">Phone</label>
-        <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
-      </div>
-      
-      <div className="flex mt-2 flex-col">
-        <label className="text-orange-500 font-roboto-opensans">Address</label>
-        <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
-      </div>
-
-      {/* place of birth */}
-      <div className="flex mt-2 flex-col">
-        <label className="text-orange-500 font-roboto-opensans">Place of Birth</label>
-        <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
-      </div>
-
-      <div className="flex mt-2 flex-col">
-        <label className="text-orange-500 font-roboto-opensans">Birthday</label>
-        <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="date" />
-      </div>
-      <div className="flex flex-row mt-10 justify-between">
-        <button onClick={()=>nextStep(1)} onMouseLeave={hoverBack()} onMouseEnter={hoverBack(true)} type="button" className="inline-flex items-center py-2.5 text-sm font-medium text-center text-orange-300 rounded  focus:outline-none hover:text-orange-500 ">
-            <ArrowLeftThick color={btnHoverBack ? 'rgb(249 115 22)' : 'rgb(253 186 116)'}  />
-            Back
-        </button>
-        <button onClick={()=>nextStep(3)} onMouseLeave={hoverNext()} onMouseEnter={hoverNext(true)} type="button" className="inline-flex items-center py-2.5 text-sm font-medium text-center text-orange-300 rounded  focus:outline-none hover:text-orange-500 ">
-          Next
-            <ArrowRightThick color={btnHoverNext ? 'rgb(249 115 22)' : 'rgb(253 186 116)'} />
-        </button>
-      </div>
-    </div>
-  )
-  const FormNextProfile = () => (
-    <div className="flex flex-col">
-      <div className="flex mt-2 flex-col">
-        <label className="text-orange-500 font-roboto-opensans">Province</label>
-        <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
-      </div>
-      <div className="flex mt-2 flex-col">
-        <label className="text-orange-500 font-roboto-opensans">City</label>
         <input className="w-full p-2 border border-orange-200 focus:border-orange-400 outline-none focus:border-2 rounded" type="text" />
       </div>
       <div className="flex mt-2 flex-col">
@@ -343,21 +277,13 @@ const Region: NextPageWithLayout = () => {
             <div className="hidden sm:basis-1/3 sm:flex sm:flex-col">
               <div className='shadow w-full rounded bg-white'>
                 <div className="p-2 flex flex-row justify-between bg-orange-200">
-                  <h3 className='text-gray-500 font-bold'>Create User</h3>
+                  <h3 className='text-gray-500 font-bold'>Add Country</h3>
                   <div className="flex gap-1 text-sm items-center justify-center flex-row">
-                  {
-                    [1,2,3].map(i => (
-                      <div key={i} className={`items-center flex justify-center border-white  text-center border rounded-full h-7 w-7 ${i === createStep && 'bg-white text-orange-500'}`}>
-                        <span>{i}</span>
-                      </div>
-                    ))  
-                  }
+                  
                   </div>
                 </div>
                 <div className="p-3">
-                  {createStep === 1 && <FormBasicInfo />}
-                  {createStep === 2 && <FormProfile />}
-                  {createStep === 3 && <FormNextProfile />}
+                  <FormCountry />
                 </div>
               </div>
             </div>
